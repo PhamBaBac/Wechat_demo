@@ -2,7 +2,7 @@ export default {
   LOGIN: 'Login',
   FORGOT_PASSWORD: 'Forgot Password',
   DEFAULT: 'Default',
-  PHONEBOOK:'AddPhoneBook',
+  PHONEBOOK: 'AddPhoneBook',
   EDIT_PROFILE: 'Edit Profile',
   CHAT_SCREEN: 'Chat Screen',
   PERSONAL_CHAT: 'Personal Chat',

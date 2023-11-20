@@ -7,5 +7,6 @@ export default {
   human: require('../assets/PhoneBook/human.png'),
   back: require('../assets/back.png'),
   send: require('../assets/send.png'),
+  cam: require('../assets/cam.png'),
 
 };
