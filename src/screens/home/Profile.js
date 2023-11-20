@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import {
-  SafeAreaView,
+  StyleSheet,
   Text,
   Image,
   TouchableOpacity,
@@ -15,9 +15,9 @@ import { ContextApp } from "../../context/contextApp";
 
 const Profile = () => {
   const navigation = useNavigation();
-  const { users,setUsers } = useContext(ContextApp);
+  const { users, setUsers } = useContext(ContextApp);
   const currentUser = users.length > 0 ? users[0] : null;
-  
+
   const handleLogout = () => {
     const updatedUsers = users.slice(1);
     setUsers(updatedUsers);
@@ -25,8 +25,14 @@ const Profile = () => {
   };
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: COLORS.white }}>
-      <View style={{ flexDirection: "row", margin: 10, alignItems: "center" }}>
+    <ScrollView style={{ flex: 1, backgroundColor: COLORS.gray }}>
+      <View
+        style={{
+          flexDirection: "row",
+          backgroundColor: COLORS.white,
+          padding: 10,
+        }}
+      >
         <Image
           source={IMGS.human}
           style={{
@@ -37,80 +43,67 @@ const Profile = () => {
           }}
         />
         <View style={{ marginLeft: 10 }}>
-          <Text style={{ fontWeight: "bold", fontSize: 25 }}>
+          <Text style={{ fontWeight: "bold", fontSize: 25, marginBottom: 20 }}>
             {currentUser ? currentUser.name : ""}
           </Text>
           <Text style={{ fontSize: 18 }}>
             Wechat ID: {currentUser ? currentUser.wechatId : ""}
           </Text>
+          <TouchableOpacity
+            style={{
+              flexDirection: "row",
+              width: 120,
+              height: 30,
+              borderColor: COLORS.grayLight,
+              borderWidth: 1,
+              borderRadius: 20,
+              justifyContent: "center",
+              marginVertical: 15,
+            }}
+          >
+            <Text style={{ fontSize: 18 }}>+</Text>
+            <Text style={{ fontSize: 18 }}>Trạng thái</Text>
+          </TouchableOpacity>
         </View>
       </View>
+      <View style={{ backgroundColor: COLORS.white, marginTop: 10 }}>
+        <TouchableOpacity
+          style={styles.TextSection}
+          onPress={() => {
+            navigation.navigate(ROUTES.EDIT_PROFILE);
+          }}
+        >
+          <Text style={{ fontSize: 18 }}>Edit Profile</Text>
+        </TouchableOpacity>
 
+        {currentUser && (
+          <>
+            {renderProfileItem(
+              "Mã QR của tôi:",
+              <QRCode
+                value={`https://example.com/${currentUser.wechatId}`}
+                size={25}
+              />
+            )}
+
+            <TouchableOpacity style={styles.TextSection}>
+              <Text style={{ fontSize: 18 }}>Cài đặt</Text>
+            </TouchableOpacity>
+          </>
+        )}
+      </View>
       <TouchableOpacity
         style={{
-          flexDirection: "row",
-          width: 200,
-          height: 40,
-          backgroundColor: COLORS.grayLight,
-          borderRadius: 15,
-          justifyContent: "center",
+          marginTop: 20,
+          height: 50,
           alignItems: "center",
-          marginLeft: 15,
-          marginVertical: 15,
+          justifyContent: "center",
+          backgroundColor: COLORS.white,
         }}
+        onPress={handleLogout}
       >
-        <Text style={{ fontSize: 20, fontWeight: "600" }}>+</Text>
-        <Text style={{ fontSize: 20, fontWeight: "600" }}>Trạng thái</Text>
+        <Text style={{ fontSize: 18 }}>Đăng xuất</Text>
       </TouchableOpacity>
-
-      <TouchableOpacity
-        style={{
-          padding: 20,
-          borderBottomWidth: 1,
-          borderColor: COLORS.lightGray,
-          borderTopWidth: 1,
-        }}
-        onPress={() => {
-          navigation.navigate(ROUTES.EDIT_PROFILE);
-        }}
-      >
-        <Text style={{ fontSize: 18 }}>Edit Profile</Text>
-      </TouchableOpacity>
-
-      {currentUser && (
-        <>
-          {renderProfileItem("Tên:", currentUser.name)}
-          {renderProfileItem("Wechat ID:", currentUser.wechatId)}
-          {renderProfileItem(
-            "Mã QR của tôi:",
-            <QRCode
-              value={`https://example.com/${currentUser.wechatId}`}
-              size={25}
-            />
-          )}
-
-          <TouchableOpacity
-            style={{
-              padding: 20,
-              borderBottomWidth: 1,
-              borderColor: COLORS.lightGray,
-            }}
-          >
-            <Text style={{ fontSize: 18 }}>Cài đặt</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={{
-              padding: 20,
-              borderBottomWidth: 1,
-              borderColor: COLORS.lightGray,
-            }}
-            onPress={handleLogout}
-          >
-            <Text style={{ fontSize: 18 }}>Đăng xuất</Text>
-          </TouchableOpacity>
-        </>
-      )}
     </ScrollView>
   );
 };
@@ -118,9 +111,11 @@ const Profile = () => {
 const renderProfileItem = (label, value) => (
   <View
     style={{
-      padding: 20,
+      padding: 15,
+      paddingLeft: 0,
+      marginLeft: 10,
       borderBottomWidth: 1,
-      borderColor: COLORS.lightGray,
+      borderBottomColor: "#cccccc",
       flexDirection: "row",
       justifyContent: "space-between",
     }}
@@ -131,3 +126,14 @@ const renderProfileItem = (label, value) => (
 );
 
 export default Profile;
+const styles = StyleSheet.create({
+  TextSection: {
+    flexDirection: "column",
+    justifyContent: "center",
+    padding: 15,
+    paddingLeft: 0,
+    marginLeft: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#cccccc",
+  },
+});

@@ -1,12 +1,16 @@
 import React,{useContext} from 'react';
 import { Text, SafeAreaView, FlatList, View, Image, TouchableOpacity,StyleSheet  } from 'react-native';
-import { COLORS, IMGS,ROUTES } from '../../constants';
+import { COLORS, ROUTES } from '../../constants';
 import { useNavigation } from "@react-navigation/native";
 import { ContextApp } from '../../context/contextApp';
 const Home = () => {
   const navigation = useNavigation();
-  const { profile} = useContext(ContextApp);
-  console.log(profile);
+  const { profile, searchText} = useContext(ContextApp);
+  const filteredData = profile.filter(
+    (item) =>
+      item.userName.toLowerCase().includes(searchText.toLowerCase()) ||
+      item.phone.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   return (
     <SafeAreaView
@@ -15,7 +19,7 @@ const Home = () => {
         backgroundColor: COLORS.white,
       }}>
       <FlatList
-        data={profile}
+        data={filteredData}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.container}>
@@ -38,6 +42,7 @@ const Home = () => {
           </View>
         )}
       />
+
     </SafeAreaView>
   );
 };

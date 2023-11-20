@@ -12,5 +12,6 @@ export {default as Login} from './auth/Login';
 export {default as Default} from './auth/defaultScreen';
 
 export {default as ChatScreen} from './home/Chat';
+export {default as PersonalChat} from './home/Personal';
 
 

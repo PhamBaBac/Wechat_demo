@@ -22,6 +22,8 @@ export const AppProvider = ({ children }) => {
     {
       id: '1',
       userName: 'Jenny Doe',
+      wechatId: 'jennydoe',
+      phone: '0111111111',
       userImg:IMGS.human,
       messageTime: '4 mins ago',
       messageText:
@@ -30,6 +32,8 @@ export const AppProvider = ({ children }) => {
     {
       id: '2',
       userName: 'John Doe',
+      wechatId: 'johndoe',
+      phone: '0222222222',
       userImg: IMGS.human,
       messageTime: '2 hours ago',
       messageText:
