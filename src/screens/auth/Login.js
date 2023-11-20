@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react"; // Import useContext
 import {
   Text,
   TextInput,
@@ -6,12 +6,32 @@ import {
   View,
   SafeAreaView,
   StyleSheet,
+  Alert,
 } from "react-native";
 import { COLORS, ROUTES } from "../../constants";
 import { useNavigation } from "@react-navigation/native";
+import { ContextApp } from "../../context/contextApp";
 
 const Login = () => {
   const navigation = useNavigation();
+  const { users, setUsers } = useContext(ContextApp); // Use useContext with SearchContext
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    const user = users.find((user) => user.phone === phoneNumber);
+
+    if (user) {
+      if (user.pass === password) {
+        setUsers([user,...users]);
+        navigation.navigate(ROUTES.HOME);
+      } else {
+        Alert.alert("Incorrect Password", "Please check your password");
+      }
+    } else {
+      Alert.alert("User Not Found", "Please check your phone number");
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -29,31 +49,42 @@ const Login = () => {
         <View style={styles.input}>
           <Text style={styles.textName}>Điện thoại</Text>
           <TextInput
-            style={{ marginRight: 40, fontSize: 18,}}
+            style={{ marginRight: 40, fontSize: 18 }}
             placeholder="(+84) xxx xxx xxx"
+            value={phoneNumber}
+            onChangeText={(text) => setPhoneNumber(text)}
           />
         </View>
         <View style={styles.input}>
           <Text style={styles.textName}>Mật khẩu</Text>
           <TextInput
-            style={{ marginRight: 50,fontSize: 18, color: COLORS.gray }}
+            style={{ marginRight: 50, fontSize: 18, color: COLORS.gray }}
             placeholder="Nhập mật khẩu "
+            secureTextEntry
+            value={password}
+            onChangeText={(text) => setPassword(text)}
           />
         </View>
       </View>
-      <View style={{alignItems: "center",}}>
-        <Pressable style={styles.button} onPress={() => navigation.navigate(ROUTES.HOME)}>
+      <View style={{ alignItems: "center" }}>
+        <Pressable style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Đăng nhập</Text>
         </Pressable>
-        <View style={{ flexDirection: "row", justifyContent: "center", marginVertical: 20}}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            marginVertical: 20,
+          }}
+        >
           <Pressable>
             <Text style={{ color: COLORS.blue }}>Quên mật khẩu</Text>
           </Pressable>
           <Text> | </Text>
-          <Pressable >
+          <Pressable>
             <Text style={{ color: COLORS.blue }}>Đăng ký</Text>
           </Pressable>
-      </View>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -83,8 +114,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   button: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: COLORS.green,
     height: 40,
     width: 180,
