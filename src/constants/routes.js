@@ -2,9 +2,10 @@ export default {
   LOGIN: 'Login',
   FORGOT_PASSWORD: 'Forgot Password',
   DEFAULT: 'Default',
-  PHONEBOOK:'AddPhoneBook',
+  PHONEBOOK: 'AddPhoneBook',
   EDIT_PROFILE: 'Edit Profile',
   CHAT_SCREEN: 'Chat Screen',
+  REGISTER: 'Register',
 
   HOME: 'Home',
   HOME_CHAT: 'Trò Chuyện',

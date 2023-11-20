@@ -49,7 +49,7 @@ const Login = () => {
         <View style={styles.input}>
           <Text style={styles.textName}>Điện thoại</Text>
           <TextInput
-            style={{ padding: 8, fontSize: 18, color:COLORS.black }}
+            style={{ padding: 8, fontSize: 18, color: COLORS.black }}
             placeholder="Nhập số điện thoại"
             value={phoneNumber}
             onChangeText={(text) => setPhoneNumber(text)}
@@ -58,7 +58,7 @@ const Login = () => {
         <View style={styles.input}>
           <Text style={styles.textName}>Mật khẩu</Text>
           <TextInput
-            style={{ padding: 8, fontSize: 18, color:COLORS.black  }}
+            style={{ padding: 8, fontSize: 18, color: COLORS.black }}
             placeholder="Nhập mật khẩu "
             secureTextEntry
             value={password}
@@ -84,7 +84,7 @@ const Login = () => {
             <Text style={{ color: COLORS.blue }}>Quên mật khẩu</Text>
           </Pressable>
           <Text> | </Text>
-          <Pressable>
+          <Pressable onPress={() => navigation.navigate(ROUTES.REGISTER)}>
             <Text style={{ color: COLORS.blue }}>Đăng ký</Text>
           </Pressable>
         </View>
