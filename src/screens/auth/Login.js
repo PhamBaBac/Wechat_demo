@@ -80,7 +80,7 @@ const Login = () => {
             marginVertical: 20,
           }}
         >
-          <Pressable>
+          <Pressable onPress={() => navigation.navigate(ROUTES.FORGOT_PASSWORD)}>
             <Text style={{ color: COLORS.blue }}>Quên mật khẩu</Text>
           </Pressable>
           <Text> | </Text>

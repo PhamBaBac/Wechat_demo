@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Default, Login, EditProfile, AddPhoneBook, ChatScreen, Register } from '../screens/index';
+import { Default, Login, EditProfile, AddPhoneBook, ChatScreen, Register, ForgotPassword } from '../screens/index';
 import { COLORS, ROUTES } from '../constants';
 import BottomTabNaVigator from './BottomTabNaVigator';
 
@@ -22,6 +22,7 @@ function AuthNavigation() {
         },
       })} />
       <Stack.Screen name={ROUTES.REGISTER} component={Register} options={{ headerTitleAlign: 'center' }} />
+      <Stack.Screen name={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} options={{ headerTitleAlign: 'center' }} />
     </Stack.Navigator>
   );
 }

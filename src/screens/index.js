@@ -1,6 +1,6 @@
 
 export { default as Home } from './home/Messenger';
-export { default as ForgotPassword } from './auth/ForgotPassword';
+export { default as ForgotPassword } from './auth/ForgotPasswordScreen';
 export { default as PhoneBook } from './home/PhoneBook';
 export { default as Profile } from './home/Profile';
 export { default as Register } from './auth/RegisterScreen ';
