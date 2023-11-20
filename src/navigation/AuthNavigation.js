@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 function AuthNavigation() {
   return (
     <Stack.Navigator initialRouteName={ROUTES.DEFAULT}>
-      <Stack.Screen name={ROUTES.LOGIN} component={Login}/>
+      <Stack.Screen name={ROUTES.LOGIN} component={Login} options={{headerTitleAlign: 'center'}}/>
       <Stack.Screen name={ROUTES.DEFAULT} component={Default} options={{headerShown: false}} />
       <Stack.Screen name={ROUTES.HOME} component={BottomTabNaVigator} options={{headerShown: false}} />
       <Stack.Screen name={ROUTES.ADD_PHONEBOOK} component={AddPhoneBook} options={{ headerShown:true}}></Stack.Screen>

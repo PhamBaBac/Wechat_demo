@@ -1,28 +1,13 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { Text, SafeAreaView, FlatList, View, Image, TouchableOpacity,StyleSheet  } from 'react-native';
 import { COLORS, IMGS,ROUTES } from '../../constants';
 import { useNavigation } from "@react-navigation/native";
-
+import { ContextApp } from '../../context/contextApp';
 const Home = () => {
   const navigation = useNavigation();
-  const Messages = [
-    {
-      id: '1',
-      userName: 'Jenny Doe',
-      userImg:IMGS.human,
-      messageTime: '4 mins ago',
-      messageText:
-        'Hey there, this is my test for a post of my social app in React Native.',
-    },
-    {
-      id: '2',
-      userName: 'John Doe',
-      userImg: IMGS.human,
-      messageTime: '2 hours ago',
-      messageText:
-        'Hey there, this is my test for a post of my social app in React Native.',
-    },
-  ]
+  const { profile} = useContext(ContextApp);
+  console.log(profile);
+
   return (
     <SafeAreaView
       style={{
@@ -30,7 +15,7 @@ const Home = () => {
         backgroundColor: COLORS.white,
       }}>
       <FlatList
-        data={Messages}
+        data={profile}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.container}>

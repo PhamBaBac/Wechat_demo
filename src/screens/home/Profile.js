@@ -16,7 +16,6 @@ import { ContextApp } from "../../context/contextApp";
 const Profile = () => {
   const navigation = useNavigation();
   const { users,setUsers } = useContext(ContextApp);
-  console.log("users", users);
   const currentUser = users.length > 0 ? users[0] : null;
   
   const handleLogout = () => {
@@ -78,7 +77,6 @@ const Profile = () => {
         <Text style={{ fontSize: 18 }}>Edit Profile</Text>
       </TouchableOpacity>
 
-      {/* Display user information dynamically */}
       {currentUser && (
         <>
           {renderProfileItem("Tên:", currentUser.name)}

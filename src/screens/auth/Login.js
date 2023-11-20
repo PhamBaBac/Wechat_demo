@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"; // Import useContext
+import React, { useState, useContext } from "react";
 import {
   Text,
   TextInput,
@@ -6,7 +6,6 @@ import {
   View,
   SafeAreaView,
   StyleSheet,
-  Alert,
 } from "react-native";
 import { COLORS, ROUTES } from "../../constants";
 import { useNavigation } from "@react-navigation/native";
@@ -14,22 +13,23 @@ import { ContextApp } from "../../context/contextApp";
 
 const Login = () => {
   const navigation = useNavigation();
-  const { users, setUsers } = useContext(ContextApp); // Use useContext with SearchContext
+  const { users, setUsers } = useContext(ContextApp);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleLogin = () => {
     const user = users.find((user) => user.phone === phoneNumber);
 
     if (user) {
       if (user.pass === password) {
-        setUsers([user,...users]);
+        setUsers([user, ...users]);
         navigation.navigate(ROUTES.HOME);
       } else {
-        Alert.alert("Incorrect Password", "Please check your password");
+        setError("Incorrect Password. Please check your password"); // Set error state
       }
     } else {
-      Alert.alert("User Not Found", "Please check your phone number");
+      setError("User Not Found. Please check your phone number"); // Set error state
     }
   };
 
@@ -49,8 +49,8 @@ const Login = () => {
         <View style={styles.input}>
           <Text style={styles.textName}>Điện thoại</Text>
           <TextInput
-            style={{ marginRight: 40, fontSize: 18 }}
-            placeholder="(+84) xxx xxx xxx"
+            style={{ padding: 8, fontSize: 18, color:COLORS.black }}
+            placeholder="Nhập số điện thoại"
             value={phoneNumber}
             onChangeText={(text) => setPhoneNumber(text)}
           />
@@ -58,12 +58,15 @@ const Login = () => {
         <View style={styles.input}>
           <Text style={styles.textName}>Mật khẩu</Text>
           <TextInput
-            style={{ marginRight: 50, fontSize: 18, color: COLORS.gray }}
+            style={{ padding: 8, fontSize: 18, color:COLORS.black  }}
             placeholder="Nhập mật khẩu "
             secureTextEntry
             value={password}
             onChangeText={(text) => setPassword(text)}
           />
+        </View>
+        <View>
+          <Text style={styles.error}>{error}</Text>
         </View>
       </View>
       <View style={{ alignItems: "center" }}>
@@ -102,6 +105,7 @@ const styles = StyleSheet.create({
   textName: {
     fontSize: 18,
     color: COLORS.black,
+    width: 100,
   },
   input: {
     flexDirection: "row",
@@ -124,5 +128,11 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     color: COLORS.white,
+  },
+  error: {
+    margin: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    color: COLORS.red,
   },
 });

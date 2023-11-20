@@ -1,60 +1,38 @@
-import React, { useState, useContext } from "react";
-import { Text, SafeAreaView, FlatList, View, Image } from "react-native";
-import { COLORS, IMGS } from "../../constants";
-import { ContextApp } from "../../context/contextApp";
+import React,{useContext} from 'react';
+import { Text, SafeAreaView, FlatList, View, Image, TouchableOpacity,StyleSheet  } from 'react-native';
+import { COLORS, IMGS,ROUTES } from '../../constants';
+import { useNavigation } from "@react-navigation/native";
+import { ContextApp } from '../../context/contextApp';
 const PhoneBook = () => {
-  const [contacts, setContacts] = useState([
-    { id: 1, name: "Hoài An", phone: "123-456-7890", avatarUrl: IMGS.human },
-    { id: 2, name: "Gia Kì", phone: "987-654-3210", avatarUrl: IMGS.human },
-    { id: 3, name: "Hạnh Chi", phone: "987-654-3210", avatarUrl: IMGS.human },
-    { id: 4, name: "Hạnh Chi", phone: "987-654-3210", avatarUrl: IMGS.human },
-    // Add other contacts as needed
-  ]);
-
-  const handleAddContact = (newContact) => {
-    setContacts([contacts, { id: contacts.length + 1, newContact }]);
-  };
-
-  const { searchText } = useContext(ContextApp);
-
-  const filteredData = contacts.filter(
-    (item) =>
-      item.phone.toLowerCase().includes(searchText.toLowerCase()) ||
-      item.name.toLowerCase().includes(searchText.toLowerCase())
-  );
+  const navigation = useNavigation();
+  const { profile} = useContext(ContextApp);
+  console.log(profile);
 
   return (
     <SafeAreaView
       style={{
         flex: 1,
         backgroundColor: COLORS.white,
-      }}
-    >
+      }}>
       <FlatList
-        data={filteredData}
-        keyExtractor={(item) => item.id.toString()}
+        data={profile}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              padding: 10,
-              backgroundColor: "#BCB9B7",
-              marginVertical: 5,
-            }}
-          >
-            <Image
-              style={{
-                width: 50,
-                height: 50,
-                borderRadius: 25,
-                marginRight: 10,
-              }}
-              source={{ uri: item.avatarUrl }}
-            />
-            <Text style={{ marginHorizontal: 10, fontSize: 20 }}>
-              {item.name}
-            </Text>
+          <View style={styles.container}>
+            <TouchableOpacity onPress={() => navigation.navigate(ROUTES.CHAT_SCREEN,{userName: item.userName})}>
+            <View style={styles.card}>
+              <View style={styles.UserInfo}>
+                <View style={styles.UserImgWrapper}>
+                  <Image source={item.userImg} style={styles.UserImg} />
+                </View>
+                <View style={styles.TextSection}>
+                  <View style={styles.UserInfoText}>
+                    <Text style={styles.UserName}>{item.userName}</Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </TouchableOpacity>
           </View>
         )}
       />
@@ -62,3 +40,44 @@ const PhoneBook = () => {
   );
 };
 export default PhoneBook;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1, 
+    alignItems: 'center', 
+    justifyContent: 'center'
+  },
+  card:{
+    width: '100%',
+  },
+  UserInfo:{
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  UserImg:{
+    width:50, 
+    height:50, 
+    borderRadius:25,
+  },
+  TextSection:{
+    flexDirection: 'column', 
+    justifyContent: 'center', 
+    padding: 15,
+    paddingLeft: 0,
+    marginLeft: 10,
+    width: 300,
+    borderBottomWidth: 1,
+    borderBottomColor: '#cccccc',
+  },
+  UserInfoText:{
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    marginBottom: 5,
+  },
+  UserName:{
+    fontSize: 14,
+    fontWeight: 'bold',
+    fontFamily: 'Lato-Regular',
+  },
+});
