@@ -1,12 +1,15 @@
 import React from 'react';
-import { SafeAreaView, Text, Image, TouchableOpacity } from 'react-native';
-import { COLORS, IMGS } from '../../constants';
-import { View } from 'react-native-web';
+import { SafeAreaView, Text, Image, TouchableOpacity,View, ScrollView } from 'react-native';
+import { COLORS, IMGS,ROUTES } from '../../constants';
 import QRCode from 'react-native-qrcode-svg';
+import { useNavigation } from "@react-navigation/native";
+
 
 const Profile = () => {
+  const navigation = useNavigation();
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
+    <ScrollView style={{ flex: 1, backgroundColor: COLORS.white }}>
       <View style={{}}>
       <View style={{ flexDirection: 'row', margin: 10, alignItems: 'center', }}>
         <Image source={IMGS.human} style={{ width: 80, height: 80, borderRadius: 15, backgroundColor:COLORS.black }} />
@@ -25,7 +28,7 @@ const Profile = () => {
       </View>
       <TouchableOpacity
         style={{ padding: 20, borderBottomWidth: 1, borderColor: COLORS.lightGray,borderTopWidth: 1, }}
-        onPress={() => { navigation.navigate('EditProfile') }}
+        onPress={() => { navigation.navigate(ROUTES.EDIT_PROFILE) }}
       >
         <Text style={{ fontSize: 18, }}>Edit Profile</Text>
       </TouchableOpacity>
@@ -45,17 +48,21 @@ const Profile = () => {
         <QRCode value="https://example.com" size={25} />
       </View>
 
-
       <TouchableOpacity
-        style={{ padding: 20, borderBottomWidth: 1, borderColor: COLORS.lightGray,borderTopWidth: 1, }}>
+        style={{ padding: 20, borderBottomWidth: 1, borderColor: COLORS.lightGray }} >
         <Text style={{ fontSize: 18, }}>Cài đặt</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={{ padding: 20, borderBottomWidth: 1, borderColor: COLORS.lightGray,borderTopWidth: 1, }}>
+        style={{ padding: 20, borderBottomWidth: 1, borderColor: COLORS.lightGray }} onPress={()=>{navigation.navigate('Login')}}>
         <Text style={{ fontSize: 18, }}>Đăng xuất</Text>
       </TouchableOpacity>
-    </SafeAreaView>
+
+      
+     
+
+      
+    </ScrollView>
   );
 };
 
