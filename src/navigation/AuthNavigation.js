@@ -7,6 +7,8 @@ import {
   AddPhoneBook,
   ChatScreen,
   PersonalChat,
+  RegisterScreen,
+  ForgotPasswordScreen
 } from "../screens/index";
 import { COLORS, ROUTES } from "../constants";
 import BottomTabNaVigator from "./BottomTabNaVigator";
@@ -62,6 +64,8 @@ function AuthNavigation() {
           },
         }}
       />
+      <Stack.Screen name={ROUTES.REGISTER} component={RegisterScreen} />
+      <Stack.Screen name={ROUTES.FORGOT_PASSWORD} component={ForgotPasswordScreen} />
     </Stack.Navigator>
   );
 }

@@ -6,6 +6,7 @@ export default {
   EDIT_PROFILE: 'Edit Profile',
   CHAT_SCREEN: 'Chat Screen',
   PERSONAL_CHAT: 'Personal Chat',
+  REGISTER: 'Register',
 
   HOME: 'Home',
   HOME_CHAT: 'Trò Chuyện',
