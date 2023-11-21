@@ -1,0 +1,23 @@
+{
+  "accounts": [
+    {
+      "name": "Nguyễn Văn A",
+      "wechatId": "nguyenvana",
+      "phone": "0123456789",
+      "password": "123456",
+      "avatar": "https://res.cloudinary.com/du6ph3m8t/image/upload/v1700564176/z4902074247852_fb39847d4e49ee9c7ff66de19b1f9ec0_ulzwhu.jpg"
+    }
+  ],
+  "profiles":[
+    {
+      "id": "1",
+      "userName": "Jenny Doe",
+      "wechatId": "jennydoe",
+      "phone": "0123459999",
+      "userImg":"https://res.cloudinary.com/du6ph3m8t/image/upload/v1700564176/z4902074247852_fb39847d4e49ee9c7ff66de19b1f9ec0_ulzwhu.jpg",
+      "messageTime": "4 min ago",
+      "messageText":
+        "Hey there, this is my test for a post of my social app in React Native."
+    }
+  ]
+}

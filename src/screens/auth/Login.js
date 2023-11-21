@@ -13,17 +13,17 @@ import { ContextApp } from "../../context/contextApp";
 
 const Login = () => {
   const navigation = useNavigation();
-  const { users, setUsers } = useContext(ContextApp);
+  const { accounts, setAccounts } = useContext(ContextApp);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleLogin = () => {
-    const user = users.find((user) => user.phone === phoneNumber);
+    const account = accounts.find((user) => user.phone === phoneNumber);
 
-    if (user) {
-      if (user.pass === password) {
-        setUsers([user, ...users]);
+    if (account) {
+      if (account.password === password) {
+        setAccounts([account, ...accounts]);
         navigation.navigate(ROUTES.HOME);
       } else {
         setError("Incorrect Password. Please check your password"); // Set error state

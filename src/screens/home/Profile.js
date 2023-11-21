@@ -15,12 +15,12 @@ import { ContextApp } from "../../context/contextApp";
 
 const Profile = () => {
   const navigation = useNavigation();
-  const { users, setUsers } = useContext(ContextApp);
-  const currentUser = users.length > 0 ? users[0] : null;
+  const { accounts, setAccounts } = useContext(ContextApp);
+  const currentUser = accounts.length > 0 ? accounts[0] : null;
 
   const handleLogout = () => {
-    const updatedUsers = users.slice(1);
-    setUsers(updatedUsers);
+    const updatedAcc = accounts.slice(1);
+    setAccounts(updatedAcc);
     navigation.navigate("Login");
   };
 
@@ -34,7 +34,7 @@ const Profile = () => {
         }}
       >
         <Image
-          source={IMGS.human}
+          source={currentUser ? currentUser.avatar : ""}
           style={{
             width: 80,
             height: 80,

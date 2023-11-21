@@ -10,7 +10,7 @@ import {
 import { COLORS, IMGS } from "../../constants";
 
 const Personal = ({ route }) => {
-  const { profile } = route.params;
+  const { profiles } = route.params;
   return (
     <ScrollView style={{ flex: 1, backgroundColor: COLORS.gray }}>
       <View
@@ -21,7 +21,7 @@ const Personal = ({ route }) => {
         }}
       >
         <Image
-          source={IMGS.human}
+          source={profiles.userImg}
           style={{
             width: 80,
             height: 80,
@@ -31,9 +31,9 @@ const Personal = ({ route }) => {
         />
         <View style={{ marginLeft: 10 }}>
           <Text style={{ fontWeight: "bold", fontSize: 25, marginBottom: 20 }}>
-            {profile.userName}
+            {profiles.userName}
           </Text>
-          <Text style={{ fontSize: 18 }}>Wechat ID: {profile.wechatId}</Text>
+          <Text style={{ fontSize: 18 }}>Wechat ID: {profiles.wechatId}</Text>
           <TouchableOpacity
             style={{
               flexDirection: "row",
@@ -67,14 +67,3 @@ const Personal = ({ route }) => {
 };
 
 export default Personal;
-const styles = StyleSheet.create({
-  TextSection: {
-    flexDirection: "column",
-    justifyContent: "center",
-    padding: 15,
-    paddingLeft: 0,
-    marginLeft: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#cccccc",
-  },
-});
