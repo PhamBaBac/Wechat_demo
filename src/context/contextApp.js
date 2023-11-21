@@ -1,45 +1,46 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { IMGS } from '../constants';
+
 export const ContextApp = createContext();
 
 export const AppProvider = ({ children }) => {
   const [searchText, setSearchText] = useState('');
-  // const [users, setUsers] = useState([
-  //   {
-  //     name: "Nguyễn Văn A",
-  //     wechatId: "nguyenvana",
-  //     phone: "0123456789",
-  //     pass: "123456",
-  //   },
-  //   {
-  //     name: "Nguyễn Văn B",
-  //     wechatId: "nguyenvanb",
-  //     phone: "0987654321",
-  //     pass: "123456",
-  //   },
-  // ]);
-  // console.log("users", users);
-  // lay du lieu tu api
   const [accounts, setAccounts] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:3000/accounts")
-      .then((res) => res.json())
-      .then((data) => {
-        setAccounts(data);
-      });
-  }, []);
-  
-  // getApi profile
+
   const [profiles, setProfiles] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/profiles")
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchProfiles = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/profiles");
+        const data = await response.json();
         setProfiles(data);
-      });
+      } catch (error) {
+        console.error("Error fetching profiles:", error);
+      }
+    };
+
+    fetchProfiles();
   }, []);
+
+  const fetchAccounts = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/accounts");
+      const data = await response.json();
+      setAccounts(data);
+    } catch (error) {
+      console.error("Error fetching accounts:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchAccounts();
+  }, []); 
+
+  const updateAccountsAfterRegistration = async () => {
+    await fetchAccounts();
+  };
+
   return (
-    <ContextApp.Provider value={{ searchText, setSearchText, accounts, setAccounts, profiles, setProfiles}}>
+    <ContextApp.Provider value={{ searchText, setSearchText, accounts, setAccounts, profiles, setProfiles, fetchAccounts,updateAccountsAfterRegistration }}>
       {children}
     </ContextApp.Provider>
   );

@@ -1,108 +1,124 @@
 import React, { useState, useContext } from "react";
 import {
-    Text,
-    TextInput,
-    Pressable,
-    View,
-    SafeAreaView,
-    StyleSheet,
-    Image
+  Text,
+  TextInput,
+  Pressable,
+  View,
+  SafeAreaView,
+  StyleSheet,
+  Image,
 } from "react-native";
 import { COLORS, IMGS, ROUTES } from "../../constants";
 import { useNavigation } from "@react-navigation/native";
 import { ContextApp } from "../../context/contextApp";
-
 const RegisterScreen = () => {
-    const navigation = useNavigation();
-    const { users, setUsers } = useContext(ContextApp);
-    const [name, setName] = useState("");
-    const [country, setCountry] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+  const navigation = useNavigation();
 
-    const handleRegister = () => {
-        // Implement your registration logic here
-        const newUser = { name, country, phone: phoneNumber, pass: password };
+  const [name, setName] = useState("");
+  const [wechatId, setWechatId] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { updateAccountsAfterRegistration } = useContext(ContextApp);
 
-        // Example: Check if the phone number already exists in the users array
-        const existingUser = users.find((user) => user.phone === phoneNumber);
+  const handleRegister = async () => {
+    try {
+      const url = "http://localhost:3000/accounts";
+      const result = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          wechatId: wechatId,
+          phone: phoneNumber,
+          password: password,
+          avatar: IMGS.avatar,
+        }),
+      });
 
-        if (existingUser) {
-            setError("Phone number is already registered");
-        } else {
-            setUsers([newUser, ...users]);
-            navigation.navigate(ROUTES.LOGIN);
-        }
-    };
+      if (result.ok) {
+        await updateAccountsAfterRegistration();
+        navigation.navigate(ROUTES.LOGIN);
+      } else {
+        setError("Registration failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+      setError("Registration failed. Please try again.");
+    }
+  };
 
-    return (
-        <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>Đăng ký bằng số điện thoại</Text>
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Đăng ký bằng số điện thoại</Text>
 
-            <View style={{ alignItems: 'center' }}>
-                <Image source={IMGS.cam} style={{ width: 50, height: 50, resizeMode: "contain" }} />
-            </View>
+      <View style={{ alignItems: "center" }}>
+        <Image
+          source={IMGS.cam}
+          style={{ width: 50, height: 50, resizeMode: "contain" }}
+        />
+      </View>
 
+      <View style={styles.input}>
+        <Text style={styles.textName}>Tên</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Trần Văn"
+          value={name}
+          onChangeText={(text) => setName(text)}
+        />
+      </View>
 
-            <View style={styles.input}>
-                <Text style={styles.textName}>Tên</Text>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder="Trần Văn"
-                    value={name}
-                    onChangeText={(text) => setName(text)}
-                />
-            </View>
+      <View style={styles.input}>
+        <Text style={styles.textName}>WechatID</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder="tranvan"
+          value={wechatId}
+          onChangeText={(text) => setWechatId(text)}
+        />
+      </View>
 
-            <View style={styles.input}>
-                <Text style={styles.textName}>Quốc gia/Khu vực</Text>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder="Việt Nam (+84)"
-                    value={country}
-                    onChangeText={(text) => setCountry(text)}
-                />
-            </View>
+      <View style={styles.input}>
+        <Text style={styles.textName}>Điện thoại</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Nhập số điện thoại"
+          value={phoneNumber}
+          onChangeText={(text) => setPhoneNumber(text)}
+        />
+      </View>
 
-            <View style={styles.input}>
-                <Text style={styles.textName}>Điện thoại</Text>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder="Nhập số điện thoại"
-                    value={phoneNumber}
-                    onChangeText={(text) => setPhoneNumber(text)}
-                />
-            </View>
+      <View style={styles.input}>
+        <Text style={styles.textName}>Mật khẩu</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Nhập mật khẩu "
+          secureTextEntry
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+        />
+      </View>
 
-            <View style={styles.input}>
-                <Text style={styles.textName}>Mật khẩu</Text>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder="Nhập mật khẩu "
-                    secureTextEntry
-                    value={password}
-                    onChangeText={(text) => setPassword(text)}
-                />
-            </View>
+      <View>
+        <Text style={styles.error}>{error}</Text>
+      </View>
 
-            <View>
-                <Text style={styles.error}>{error}</Text>
-            </View>
+      <View style={styles.buttonContainer}>
+        <Pressable style={styles.button} onPress={handleRegister}>
+          <Text style={styles.buttonText}>Đăng ký</Text>
+        </Pressable>
+      </View>
 
-            <View style={styles.buttonContainer}>
-                <Pressable style={styles.button} onPress={handleRegister}>
-                    <Text style={styles.buttonText}>Đăng ký</Text>
-                </Pressable>
-            </View>
-
-            <View style={styles.linkContainer}>
-                <Pressable onPress={() => navigation.navigate(ROUTES.LOGIN)}>
-                    <Text style={styles.linkText}>Đã có tài khoản? Đăng nhập ngay</Text>
-                </Pressable>
-            </View>
-        </SafeAreaView>
-    );
+      <View style={styles.linkContainer}>
+        <Pressable onPress={() => navigation.navigate(ROUTES.LOGIN)}>
+          <Text style={styles.linkText}>Đã có tài khoản? Đăng nhập ngay</Text>
+        </Pressable>
+      </View>
+    </SafeAreaView>
+  );
 };
 
 export default RegisterScreen;
