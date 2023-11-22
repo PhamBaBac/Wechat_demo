@@ -5,12 +5,12 @@ const theme = {
     light:{
         theme: 'light',
         color:'black',
-        backgroundColor:COLORS.gray,
+        backgroundColor: [COLORS.gray, COLORS.white, COLORS.gray,COLORS.white,]
     },
     dark:{
         theme: 'dark',
         color:'white',
-        backgroundColor:'black',
+        backgroundColor:[ COLORS.black, COLORS.dark,COLORS.dark,COLORS.black,]
     }
 }
 

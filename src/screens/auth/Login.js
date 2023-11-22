@@ -20,17 +20,18 @@ const Login = () => {
 
   const handleLogin = async  () => {
     try {
-      const account = accounts.find((user) => user.phone === phoneNumber);
-      if (account) {
-        if (account.password === password) {
-          setAccounts([account,...accounts]);
-          navigation.navigate(ROUTES.HOME);
-        } else {
-          setError("Mật khẩu không đúng. Vui lòng kiểm tra lại");
-        }
-      } else {
-        setError("Người dùng không tồn tại. Vui lòng kiểm tra lại số điện thoại");
-      }
+      // const account = accounts.find((user) => user.phone === phoneNumber);
+      // if (account) {
+      //   if (account.password === password) {
+      //     setAccounts([account,...accounts]);
+      //     navigation.navigate(ROUTES.HOME);
+      //   } else {
+      //     setError("Mật khẩu không đúng. Vui lòng kiểm tra lại");
+      //   }
+      // } else {
+      //   setError("Người dùng không tồn tại. Vui lòng kiểm tra lại số điện thoại");
+      // }
+      navigation.navigate(ROUTES.HOME);
     } catch (error) {
       setError("Đã xảy ra lỗi khi đăng nhập");
       console.error("Error during login:", error);

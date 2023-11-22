@@ -16,19 +16,17 @@ import { ContextApp } from "../../context/contextApp";
 const Profile = () => {
   const navigation = useNavigation();
   const { accounts, theme } = useContext(ContextApp);
-  const [darkMode, setDarkMode] = useState(false);
   const currentUser = accounts.length > 0 ? accounts[0] : null;
-
   const handleLogout = () => {
     navigation.navigate(ROUTES.SETTING);
   };
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: COLORS.gray }}>
+    <ScrollView style={{ flex: 1, backgroundColor: theme.backgroundColor[0]}}>
       <View
         style={{
           flexDirection: "row",
-          backgroundColor: COLORS.white,
+          backgroundColor:  theme.backgroundColor[1],
           padding: 10,
         }}
       >
@@ -43,11 +41,11 @@ const Profile = () => {
           />
         </View>
         <View style={{ marginLeft: 14 }}>
-          <Text style={{ fontWeight: "bold", fontSize: 25, marginBottom: 20 }}>
+          <Text style={{ fontWeight: "bold", fontSize: 25, marginBottom: 20, color: theme.color }}>
             {currentUser ? currentUser.name : ""}
           </Text>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <Text style={{ fontSize: 18 }}>
+            <Text style={{ fontSize: 18,color: theme.color }}>
               Wechat ID: {currentUser ? currentUser.wechatId : ""}
             </Text>
             <View style={{ marginLeft: 60 }}>
@@ -70,8 +68,8 @@ const Profile = () => {
               marginVertical: 15,
             }}
           >
-            <Text style={{ fontSize: 18 }}>+</Text>
-            <Text style={{ fontSize: 18 }}>Trạng thái</Text>
+            <Text style={{ fontSize: 18, color: theme.color }}>+</Text>
+            <Text style={{ fontSize: 18, color: theme.color}}>Trạng thái</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -79,7 +77,7 @@ const Profile = () => {
         style={{
           marginTop: 6,
           height: 50,
-          backgroundColor: COLORS.white,
+          backgroundColor:  theme.backgroundColor[1],
           alignItems: "center",
           flexDirection: "row",
           justifyContent: "space-between",
@@ -88,7 +86,7 @@ const Profile = () => {
       >
         <View style={{ flexDirection: 'row', paddingLeft: 10 }}>
           <Image source={IMGS.speech} style={{ width: 24, height: 24 }} />
-          <Text style={{ fontSize: 18, marginLeft: 10 }}>Dịch vụ</Text>
+          <Text style={{ fontSize: 18, marginLeft: 10, color: theme.color }}>Dịch vụ</Text>
         </View>
 
         <Image
@@ -101,11 +99,11 @@ const Profile = () => {
           }}
         />
       </TouchableOpacity>
-      <View style={{ backgroundColor: COLORS.white, marginTop: 6 }}>
+      <View style={{ backgroundColor:  theme.backgroundColor[1], marginTop: 6 }}>
         <TouchableOpacity style={styles.TextSection}>
           <View style={{ flexDirection: 'row' }} >
             <Image source={IMGS.box} style={{ width: 24, height: 24 }} />
-            <Text style={{ fontSize: 18, marginLeft: 10 }}>Mục ưa thích</Text>
+            <Text style={{ fontSize: 18, marginLeft: 10, color: theme.color }}>Mục ưa thích</Text>
           </View>
 
 
@@ -122,7 +120,7 @@ const Profile = () => {
         <TouchableOpacity style={styles.TextSection}>
           <View style={{ flexDirection: 'row' }}>
             <Image source={IMGS.pic} style={{ width: 24, height: 24 }} />
-            <Text style={{ fontSize: 18, marginLeft: 10 }}>Bài Đăng của tôi</Text>
+            <Text style={{ fontSize: 18, marginLeft: 10, color: theme.color }}>Bài Đăng của tôi</Text>
           </View>
 
           <Image
@@ -139,7 +137,7 @@ const Profile = () => {
         <TouchableOpacity style={styles.TextSection}>
           <View style={{ flexDirection: 'row' }}>
             <Image source={IMGS.card} style={{ width: 24, height: 24 }} />
-            <Text style={{ fontSize: 18, marginLeft: 10 }}>Thẻ & Ưu đãi</Text>
+            <Text style={{ fontSize: 18, marginLeft: 10, color: theme.color }}>Thẻ & Ưu đãi</Text>
           </View>
 
           <Image
@@ -152,13 +150,13 @@ const Profile = () => {
           />
         </TouchableOpacity>
 
-
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
             paddingRight: 15,
+            backgroundColor:  theme.backgroundColor[1],
           }}
         >
           <TouchableOpacity
@@ -166,7 +164,7 @@ const Profile = () => {
           >
             <View style={{ flexDirection: 'row' }}>
               <Image source={IMGS.smile} style={{ width: 24, height: 24 }} />
-              <Text style={{ fontSize: 18, marginLeft: 10 }}>Thư viện nhãn</Text>
+              <Text style={{ fontSize: 18, marginLeft: 10, color: theme.color }}>Thư viện nhãn</Text>
             </View>
 
           </TouchableOpacity>
@@ -181,12 +179,11 @@ const Profile = () => {
         </View>
       </View>
 
-
       <TouchableOpacity
         style={{
           marginTop: 6,
           height: 50,
-          backgroundColor: COLORS.white,
+          backgroundColor:  theme.backgroundColor[1],
           alignItems: "center",
           flexDirection: "row",
           justifyContent: "space-between",
@@ -196,7 +193,7 @@ const Profile = () => {
       >
         <View style={{ flexDirection: 'row' }}>
           <Image source={IMGS.setting} style={{ width: 24, height: 24 }} />
-          <Text style={{ fontSize: 18, marginLeft: 10 }}>Cài đặt</Text>
+          <Text style={{ fontSize: 18, marginLeft: 10, color: theme.color }}>Cài đặt</Text>
         </View>
 
         <Image

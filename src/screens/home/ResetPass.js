@@ -110,12 +110,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: COLORS.white,
     padding: 16,
+    justifyContent: "flex-start",
   },
   title: {
     textAlign: "center",
     fontSize: 18,
     color: COLORS.gray,
-    marginBottom: 20,
+    marginVertical: 20,
+
   },
   infoContainer: {
     flexDirection: "row",
@@ -123,8 +125,8 @@ const styles = StyleSheet.create({
     height: 44,
     fontSize: 16,
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.gray,
-    marginBottom: 20,
+    borderBottomColor: COLORS.grayLight,
+    padding: 10,
   },
   label: {
     fontSize: 18,
@@ -139,11 +141,11 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    height: 44,
+    height: 50,
     fontSize: 16,
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.gray,
-    marginBottom: 20,
+    borderBottomColor: COLORS.grayLight,
+    padding: 10,
   },
   input: {
     flex: 1,

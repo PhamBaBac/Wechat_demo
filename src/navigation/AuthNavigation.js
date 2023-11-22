@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import {
   Default,
@@ -16,11 +16,13 @@ import { COLORS, ROUTES, IMGS } from "../constants";
 import BottomTabNaVigator from "./BottomTabNaVigator";
 import { Pressable, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { ContextApp } from "../context/contextApp";
 
 const Stack = createStackNavigator();
 
 function AuthNavigation() {
   const navigation = useNavigation();
+  const { theme } = useContext(ContextApp);
   return (
     <Stack.Navigator initialRouteName={ROUTES.DEFAULT}>
       <Stack.Screen
@@ -49,12 +51,20 @@ function AuthNavigation() {
       <Stack.Screen
         name={ROUTES.HOME}
         component={BottomTabNaVigator}
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+        }}
       />
       <Stack.Screen
         name={ROUTES.ADD_PHONEBOOK}
         component={AddPhoneBook}
-        options={{ headerShown: true }}
+        options={{
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: theme.backgroundColor[2],
+          },
+          headerTintColor: theme.color,
+        }}
       />
       <Stack.Screen
         name={ROUTES.EDIT_PROFILE}
@@ -88,8 +98,9 @@ function AuthNavigation() {
         options={{
           headerTitleAlign: "center",
           headerStyle: {
-            backgroundColor: COLORS.gray,
+            backgroundColor: theme.backgroundColor[2],
           },
+          headerTintColor: theme.color,
           headerLeft: () => (
             <Pressable
               onPress={() => navigation.goBack()}
@@ -110,8 +121,9 @@ function AuthNavigation() {
         options={{
           headerTitleAlign: "center",
           headerStyle: {
-            backgroundColor: COLORS.gray,
+            backgroundColor: theme.backgroundColor[2],
           },
+          headerTintColor: theme.color,
           headerLeft: () => (
             <Pressable
               onPress={() => navigation.goBack()}
@@ -122,13 +134,14 @@ function AuthNavigation() {
           ),
         }}
       />
-       <Stack.Screen
+      <Stack.Screen
         name={ROUTES.RESET_PASS}
         component={ResetPass}
         options={{
           headerTitleAlign: "center",
           headerStyle: {
-            backgroundColor: COLORS.gray,
+            backgroundColor: theme.backgroundColor[1],
+            color: theme.color,
           },
           headerLeft: () => (
             <Pressable

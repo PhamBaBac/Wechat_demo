@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { ContextApp } from '../../context/contextApp';
 const Home = () => {
   const navigation = useNavigation();
-  const { profiles, searchText} = useContext(ContextApp);
+  const { profiles, searchText,theme} = useContext(ContextApp);
   const filteredData = profiles.filter(
     (item) =>
       item.userName.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -16,13 +16,13 @@ const Home = () => {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: COLORS.white,
+        backgroundColor: theme.backgroundColor[3],
       }}>
       <FlatList
         data={filteredData}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <View style={styles.container}>
+          <View style={[styles.container,{backgroundColor: theme.backgroundColor[1]}]}>
             <TouchableOpacity onPress={() => navigation.navigate(ROUTES.CHAT_SCREEN,{userName: item.userName})}>
             <View style={styles.card}>
               <View style={styles.UserInfo}>
@@ -31,10 +31,10 @@ const Home = () => {
                 </View>
                 <View style={styles.TextSection}>
                   <View style={styles.UserInfoText}>
-                    <Text style={styles.UserName}>{item.userName}</Text>
-                    <Text style={styles.PostTime}>{item.messageTime}</Text>
+                    <Text style={[styles.UserName,{color:theme.color}]}>{item.userName}</Text>
+                    <Text style={[styles.PostTime, {color:theme.color}]}>{item.messageTime}</Text>
                   </View>
-                  <Text style={styles.MessageText}>{item.messageText}</Text>
+                  <Text style={[styles.MessageText, {color:theme.color}]}>{item.messageText}</Text>
                 </View>
               </View>
             </View>

@@ -1,12 +1,20 @@
-import React, { useContext } from 'react';
-import { Text, SafeAreaView, FlatList, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import { COLORS, IMGS, ROUTES } from '../../constants';
+import React, { useContext } from "react";
+import {
+  Text,
+  SafeAreaView,
+  FlatList,
+  View,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
+import { COLORS, IMGS, ROUTES } from "../../constants";
 import { useNavigation } from "@react-navigation/native";
-import { ContextApp } from '../../context/contextApp';
+import { ContextApp } from "../../context/contextApp";
 
 const PhoneBook = () => {
   const navigation = useNavigation();
-  const { profiles, searchText} = useContext(ContextApp);
+  const { profiles, searchText, theme } = useContext(ContextApp);
   const filteredData = profiles.filter(
     (item) =>
       item.userName.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -21,13 +29,19 @@ const PhoneBook = () => {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: COLORS.white,
-      }}>
+        backgroundColor: theme.backgroundColor[3],
+      }}
+    >
       <FlatList
         data={filteredData}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <View style={styles.container}>
+          <View
+            style={[
+              styles.container,
+              { backgroundColor: theme.backgroundColor[1] },
+            ]}
+          >
             <TouchableOpacity onPress={() => handleUserPress(item)}>
               <View style={styles.card}>
                 <View style={styles.UserInfo}>
@@ -36,7 +50,9 @@ const PhoneBook = () => {
                   </View>
                   <View style={styles.TextSection}>
                     <View style={styles.UserInfoText}>
-                      <Text style={styles.UserName}>{item.userName}</Text>
+                      <Text style={[styles.UserName, { color: theme.color }]}>
+                        {item.userName}
+                      </Text>
                     </View>
                   </View>
                 </View>
@@ -54,16 +70,16 @@ export default PhoneBook;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: "center",
+    justifyContent: "center",
   },
   card: {
-    width: '100%',
+    width: "100%",
   },
   UserInfo: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginTop: 10,
   },
   UserImg: {
@@ -72,23 +88,23 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   TextSection: {
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: "column",
+    justifyContent: "center",
     padding: 15,
     paddingLeft: 0,
     marginLeft: 10,
     width: 300,
     borderBottomWidth: 1,
-    borderBottomColor: '#cccccc',
+    borderBottomColor: "#cccccc",
   },
   UserInfoText: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: 5,
   },
   UserName: {
     fontSize: 14,
-    fontWeight: 'bold',
-    fontFamily: 'Lato-Regular',
+    fontWeight: "bold",
+    fontFamily: "Lato-Regular",
   },
 });

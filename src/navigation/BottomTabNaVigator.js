@@ -9,17 +9,19 @@ import { ContextApp } from "../context/contextApp";
 
 const Tab = createBottomTabNavigator();
 
-function BottomTabNavigator({ }) {
+function BottomTabNavigator({}) {
   const navigation = useNavigation();
-  const { setSearchText } = useContext(ContextApp);
+  const { setSearchText, theme } = useContext(ContextApp);
   const [isSearchVisible, setSearchVisible] = useState(false);
-
   const handleSearchClick = () => {
     setSearchVisible(!isSearchVisible);
   };
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
+        tabBarStyle: {
+          backgroundColor: theme.backgroundColor[2],
+        },
         tabBarActiveTintColor: COLORS.green,
         tabBarIcon: ({ focused, color, size }) => {
           let iconImage;
@@ -34,7 +36,6 @@ function BottomTabNavigator({ }) {
             iconImage = focused ? IMGS.compass : IMGS.compass;
           }
 
-
           return (
             <Image
               source={iconImage}
@@ -44,9 +45,7 @@ function BottomTabNavigator({ }) {
         },
       })}
       tabBarOptions={{
-        inactiveTintColor: "#000",
-        activeBackgroundColor: COLORS.gray,
-        inactiveBackgroundColor: COLORS.gray,
+        inactiveTintColor: theme.color,
       }}
     >
       <Tab.Screen
@@ -84,10 +83,11 @@ function BottomTabNavigator({ }) {
                   style={{
                     width: 200,
                     height: 30,
-                    borderColor: "gray",
+                    borderColor: theme.color,
                     borderWidth: 1,
                     borderRadius: 5,
                     paddingLeft: 10,
+                    color: theme.color,
                   }}
                   onChangeText={(text) => setSearchText(text)}
                   placeholder="Search"
@@ -99,6 +99,7 @@ function BottomTabNavigator({ }) {
                   style={{
                     fontSize: 20,
                     fontWeight: "bold",
+                    color: theme.color,
                   }}
                 >
                   WeChat
@@ -106,7 +107,7 @@ function BottomTabNavigator({ }) {
               </View>
             ),
           headerStyle: {
-            backgroundColor: COLORS.gray,
+            backgroundColor: theme.backgroundColor[2],
           },
         }}
       />
@@ -150,6 +151,7 @@ function BottomTabNavigator({ }) {
                     borderWidth: 1,
                     borderRadius: 5,
                     paddingLeft: 10,
+                    color: theme.color,
                   }}
                   onChangeText={(text) => setSearchText(text)}
                   placeholder="Search"
@@ -160,17 +162,17 @@ function BottomTabNavigator({ }) {
                 style={{
                   fontSize: 20,
                   fontWeight: "bold",
+                  color: theme.color,
                 }}
               >
                 Danh bạ
               </Text>
             ),
           headerStyle: {
-            backgroundColor: COLORS.gray,
+            backgroundColor: theme.backgroundColor[2],
           },
         }}
       />
-
 
       <Tab.Screen
         name={ROUTES.DISCOVER}
@@ -183,13 +185,14 @@ function BottomTabNavigator({ }) {
               style={{
                 fontSize: 20,
                 fontWeight: "bold",
+                color: theme.color,
               }}
             >
               Khám phá
             </Text>
           ),
           headerStyle: {
-            backgroundColor: COLORS.gray,
+            backgroundColor: theme.backgroundColor[2],
           },
         }}
       />

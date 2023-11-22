@@ -15,25 +15,25 @@ import { Switch } from "react-native";
 import { EventRegister } from "react-native-event-listeners";
 const Setting = () => {
   const navigation = useNavigation();
-  const { accounts, setAccounts,theme } = useContext(ContextApp);
+  const { theme } = useContext(ContextApp);
   const handleLogout = () => {
     navigation.navigate("Login");
   };
 
   const [darkMode, setDarkMode] = useState(false);
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: COLORS.gray }}>
+    <ScrollView style={{ flex: 1, backgroundColor:  theme.backgroundColor[0] }}>
       <TouchableOpacity
       onPress={() => navigation.navigate(ROUTES.RESET_PASS)} 
         style={{
           height: 50,
-          backgroundColor: COLORS.white,
+          backgroundColor:  theme.backgroundColor[1],
           alignItems: "center",
           flexDirection: "row",
           justifyContent: "space-between",
         }}
       >
-        <Text style={{ fontSize: 18, marginLeft: 10 }}>Mật khẩu</Text>
+        <Text style={{ fontSize: 18, marginLeft: 10, color: theme.color }}>Mật khẩu</Text>
         <Image
           source={IMGS.nextpage}
           style={{
@@ -44,9 +44,9 @@ const Setting = () => {
           }}
         />
       </TouchableOpacity>
-      <View style={{ backgroundColor: COLORS.white, marginTop: 6 }}>
+      <View style={[{ backgroundColor: COLORS.white, marginTop: 6 },{ backgroundColor:  theme.backgroundColor[1]}]}>
         <TouchableOpacity style={styles.TextSection}>
-          <Text style={{ fontSize: 18 }}>Thông báo tin nhắn</Text>
+          <Text style={{ fontSize: 18, color: theme.color }}>Thông báo tin nhắn</Text>
           <Image
             source={IMGS.nextpage}
             style={{
@@ -57,7 +57,7 @@ const Setting = () => {
           />
         </TouchableOpacity>
         <TouchableOpacity style={styles.TextSection}>
-          <Text style={{ fontSize: 18 }}>Trò chuyện</Text>
+          <Text style={{ fontSize: 18, color: theme.color }}>Trò chuyện</Text>
           <Image
             source={IMGS.nextpage}
             style={{
@@ -73,14 +73,16 @@ const Setting = () => {
             alignItems: "center",
             justifyContent: "space-between",
             paddingRight: 15,
+            backgroundColor:  theme.backgroundColor[1]
           }}
         >
           <TouchableOpacity
             style={{ padding: 15, paddingLeft: 0, marginLeft: 10 }}
           >
-            <Text style={{ fontSize: 18 }}>Chế độ tối</Text>
+            <Text style={{ fontSize: 18, color: theme.color }}>Chế độ tối</Text>
           </TouchableOpacity>
           <Switch
+            trackColor={{ false: COLORS.gray, true: COLORS.green }}
             value={darkMode}
             onValueChange={(value) => {
               setDarkMode(value);
@@ -93,13 +95,13 @@ const Setting = () => {
         style={{
           marginTop: 6,
           height: 50,
-          backgroundColor: COLORS.white,
+          backgroundColor:  theme.backgroundColor[1],
           alignItems: "center",
           justifyContent: "center",
         }}
         onPress={handleLogout}
       >
-        <Text style={{ fontSize: 18, marginLeft: 10 }}>Đăng xuất</Text>
+        <Text style={{ fontSize: 18, marginLeft: 10,color: theme.color }}>Đăng xuất</Text>
       </TouchableOpacity>
     </ScrollView>
   );
