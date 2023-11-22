@@ -5,6 +5,7 @@ export default {
   PHONEBOOK: 'AddPhoneBook',
   EDIT_PROFILE: 'Edit Profile',
   REGISTER: 'Register',
+  DISCOVER: 'Discover',
 
   HOME: 'Home',
   HOME_CHAT: 'Trò Chuyện',

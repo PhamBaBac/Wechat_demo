@@ -2,14 +2,14 @@ import React, { useState, useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/native";
 import { ROUTES, IMGS, COLORS } from "../constants";
-import { Home, PhoneBook, Profile } from "../screens";
+import { Home, PhoneBook, Profile, discover } from "../screens";
 import { Image, View, Text, Pressable, TextInput } from "react-native";
 
 import { ContextApp } from "../context/contextApp";
 
 const Tab = createBottomTabNavigator();
 
-function BottomTabNavigator({}) {
+function BottomTabNavigator({ }) {
   const navigation = useNavigation();
   const { setSearchText } = useContext(ContextApp);
   const [isSearchVisible, setSearchVisible] = useState(false);
@@ -30,7 +30,10 @@ function BottomTabNavigator({}) {
             iconImage = focused ? IMGS.phoneBook : IMGS.phoneBook;
           } else if (route.name === ROUTES.PROFILE) {
             iconImage = focused ? IMGS.profile : IMGS.profile;
+          } else if (route.name === ROUTES.DISCOVER) {
+            iconImage = focused ? IMGS.compass : IMGS.compass;
           }
+
 
           return (
             <Image
@@ -167,6 +170,30 @@ function BottomTabNavigator({}) {
           },
         }}
       />
+
+
+      <Tab.Screen
+        name={ROUTES.DISCOVER}
+        component={discover}
+        options={{
+          headerShown: true,
+          headerTitleAlign: "center",
+          headerTitle: () => (
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: "bold",
+              }}
+            >
+              Khám phá
+            </Text>
+          ),
+          headerStyle: {
+            backgroundColor: COLORS.gray,
+          },
+        }}
+      />
+
       <Tab.Screen
         name={ROUTES.PROFILE}
         component={Profile}
