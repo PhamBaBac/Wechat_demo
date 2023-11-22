@@ -1,5 +1,26 @@
 {
   "accounts": [
+    {
+      "name": "Kenny",
+      "wechatId": "kennypham",
+      "phone": "0123456789",
+      "password": "123456",
+      "id": 1
+    },
+    {
+      "name": "BacP",
+      "wechatId": "bacp",
+      "phone": "0987654321",
+      "password": "12345678",
+      "id": 2
+    },
+    {
+      "name": "",
+      "wechatId": "",
+      "phone": "",
+      "password": "",
+      "id": 3
+    }
   ],
   "profiles": [
     {

@@ -8,20 +8,37 @@ import {
   ChatScreen,
   PersonalChat,
   RegisterScreen,
-  ForgotPasswordScreen
+  ForgotPasswordScreen,
+  Setting,
 } from "../screens/index";
-import { COLORS, ROUTES } from "../constants";
+import { COLORS, ROUTES, IMGS } from "../constants";
 import BottomTabNaVigator from "./BottomTabNaVigator";
+import { Pressable, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const Stack = createStackNavigator();
 
 function AuthNavigation() {
+  const navigation = useNavigation();
   return (
     <Stack.Navigator initialRouteName={ROUTES.DEFAULT}>
       <Stack.Screen
         name={ROUTES.LOGIN}
         component={Login}
-        options={{ headerTitleAlign: "center" }}
+        options={{
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: COLORS.gray,
+          },
+          headerLeft: () => (
+            <Pressable
+              onPress={() => navigation.goBack()}
+              style={{ marginLeft: 10 }}
+            >
+              <Image source={IMGS.backpage} style={{ width: 20, height: 20 }} />
+            </Pressable>
+          ),
+        }}
       />
       <Stack.Screen
         name={ROUTES.DEFAULT}
@@ -64,8 +81,46 @@ function AuthNavigation() {
           },
         }}
       />
-      <Stack.Screen name={ROUTES.REGISTER} component={RegisterScreen} />
-      <Stack.Screen name={ROUTES.FORGOT_PASSWORD} component={ForgotPasswordScreen} />
+      <Stack.Screen
+        name={ROUTES.REGISTER}
+        component={RegisterScreen}
+        options={{
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: COLORS.gray,
+          },
+          headerLeft: () => (
+            <Pressable
+              onPress={() => navigation.goBack()}
+              style={{ marginLeft: 10 }}
+            >
+              <Image source={IMGS.backpage} style={{ width: 20, height: 20 }} />
+            </Pressable>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name={ROUTES.FORGOT_PASSWORD}
+        component={ForgotPasswordScreen}
+      />
+      <Stack.Screen
+        name={ROUTES.SETTING}
+        component={Setting}
+        options={{
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: COLORS.gray,
+          },
+          headerLeft: () => (
+            <Pressable
+              onPress={() => navigation.goBack()}
+              style={{ marginLeft: 10 }}
+            >
+              <Image source={IMGS.backpage} style={{ width: 20, height: 20 }} />
+            </Pressable>
+          ),
+        }}
+      />
     </Stack.Navigator>
   );
 }

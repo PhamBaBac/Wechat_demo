@@ -4,9 +4,13 @@ export default {
   profile: require('../assets/profile.png'),
   add: require('../assets/add.png'),
   search: require('../assets/search.png'),
-  human: require('../assets/PhoneBook/human.png'),
   back: require('../assets/back.png'),
   send: require('../assets/send.png'),
   cam: require('../assets/cam.png'),
-
+  user: require('../assets/images/user.jpg'),
+  setting: require('../assets/images/setting.png'),
+  smile: require('../assets/images/smile.png'),
+  post: require('../assets/images/post.png'),
+  nextpage: require('../assets/images/nextpage.png'),
+  backpage: require('../assets/images/backpage.png'),
 };

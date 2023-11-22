@@ -20,7 +20,6 @@ const Login = () => {
 
   const handleLogin = () => {
     const account = accounts.find((user) => user.phone === phoneNumber);
-    console.log("account", account);
     if (account) {
       if (account.password === password) {
         setAccounts([account, ...accounts]);

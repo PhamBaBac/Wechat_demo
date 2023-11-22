@@ -152,6 +152,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: COLORS.gray,
         marginVertical: 10,
+        marginHorizontal: 10,
     },
     textInput: {
         padding: 8,

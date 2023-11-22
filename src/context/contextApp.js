@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
-
+import theme from "../theme/theme";
+import { EventRegister } from 'react-native-event-listeners'
 export const ContextApp = createContext();
 
 export const AppProvider = ({ children }) => {
@@ -39,8 +40,19 @@ export const AppProvider = ({ children }) => {
     await fetchAccounts();
   };
 
+  const [darkMode, setDarkMode] = useState(false);
+  useEffect(() => {
+    const listener = EventRegister.addEventListener('changeTheme', (data) => {
+      setDarkMode(data)
+      console.log(data)
+    })
+    return () => {
+      EventRegister.removeEventListener(listener)
+    }
+  }, [darkMode])
+
   return (
-    <ContextApp.Provider value={{ searchText, setSearchText, accounts, setAccounts, profiles, setProfiles, fetchAccounts,updateAccountsAfterRegistration }}>
+    <ContextApp.Provider value={{  theme: darkMode === true ? theme.dark : theme.light,searchText, setSearchText, accounts, setAccounts, profiles, setProfiles, fetchAccounts,updateAccountsAfterRegistration}}>
       {children}
     </ContextApp.Provider>
   );
