@@ -52,7 +52,6 @@ const Profile = () => {
             </Text>
             <View style={{ marginLeft: 60 }}>
               <QRCode
-                value={currentUser ? currentUser.phone : ""}
                 size={18}
                 color="black"
                 backgroundColor="white"

@@ -15,5 +15,6 @@ export default {
   PROFILE: 'Tôi',
   ADD_PHONEBOOK: 'Thêm Danh Bạ',
   SETTING: 'Cài Đặt',
+  RESET_PASS: 'Đặt Lại Mật Khẩu',
 
 };

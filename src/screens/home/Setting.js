@@ -17,8 +17,6 @@ const Setting = () => {
   const navigation = useNavigation();
   const { accounts, setAccounts,theme } = useContext(ContextApp);
   const handleLogout = () => {
-    const updatedAcc = accounts.slice(1);
-    setAccounts(updatedAcc);
     navigation.navigate("Login");
   };
 
@@ -26,6 +24,7 @@ const Setting = () => {
   return (
     <ScrollView style={{ flex: 1, backgroundColor: COLORS.gray }}>
       <TouchableOpacity
+      onPress={() => navigation.navigate(ROUTES.RESET_PASS)} 
         style={{
           height: 50,
           backgroundColor: COLORS.white,

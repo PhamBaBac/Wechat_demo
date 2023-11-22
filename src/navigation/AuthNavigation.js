@@ -10,6 +10,7 @@ import {
   RegisterScreen,
   ForgotPasswordScreen,
   Setting,
+  ResetPass,
 } from "../screens/index";
 import { COLORS, ROUTES, IMGS } from "../constants";
 import BottomTabNaVigator from "./BottomTabNaVigator";
@@ -106,6 +107,24 @@ function AuthNavigation() {
       <Stack.Screen
         name={ROUTES.SETTING}
         component={Setting}
+        options={{
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: COLORS.gray,
+          },
+          headerLeft: () => (
+            <Pressable
+              onPress={() => navigation.goBack()}
+              style={{ marginLeft: 10 }}
+            >
+              <Image source={IMGS.backpage} style={{ width: 20, height: 20 }} />
+            </Pressable>
+          ),
+        }}
+      />
+       <Stack.Screen
+        name={ROUTES.RESET_PASS}
+        component={ResetPass}
         options={{
           headerTitleAlign: "center",
           headerStyle: {
