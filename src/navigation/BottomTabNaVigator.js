@@ -9,7 +9,7 @@ import { ContextApp } from "../context/contextApp";
 
 const Tab = createBottomTabNavigator();
 
-function BottomTabNavigator({}) {
+function BottomTabNavigator({ }) {
   const navigation = useNavigation();
   const { setSearchText } = useContext(ContextApp);
   const [isSearchVisible, setSearchVisible] = useState(false);

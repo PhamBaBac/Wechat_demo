@@ -1,4 +1,4 @@
-import React, { useContext,useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -15,7 +15,7 @@ import { ContextApp } from "../../context/contextApp";
 
 const Profile = () => {
   const navigation = useNavigation();
-  const { accounts, theme} = useContext(ContextApp);
+  const { accounts, theme } = useContext(ContextApp);
   const [darkMode, setDarkMode] = useState(false);
   const currentUser = accounts.length > 0 ? accounts[0] : null;
 
@@ -32,7 +32,7 @@ const Profile = () => {
           padding: 10,
         }}
       >
-        <View style={{width: 80}}>
+        <View style={{ width: 80 }}>
           <Image
             source={IMGS.user}
             style={{
@@ -87,7 +87,11 @@ const Profile = () => {
         }}
         onPress={handleLogout}
       >
-        <Text style={{ fontSize: 18, marginLeft: 10 }}>Dịch vụ</Text>
+        <View style={{ flexDirection: 'row', paddingLeft: 10 }}>
+          <Image source={IMGS.speech} style={{ width: 24, height: 24 }} />
+          <Text style={{ fontSize: 18, marginLeft: 10 }}>Dịch vụ</Text>
+        </View>
+
         <Image
           source={IMGS.nextpage}
           style={{
@@ -100,7 +104,12 @@ const Profile = () => {
       </TouchableOpacity>
       <View style={{ backgroundColor: COLORS.white, marginTop: 6 }}>
         <TouchableOpacity style={styles.TextSection}>
-          <Text style={{ fontSize: 18 }}>Mục ưa thích</Text>
+          <View style={{ flexDirection: 'row' }} >
+            <Image source={IMGS.box} style={{ width: 24, height: 24 }} />
+            <Text style={{ fontSize: 18, marginLeft: 10 }}>Mục ưa thích</Text>
+          </View>
+
+
           <Image
             source={IMGS.nextpage}
             style={{
@@ -110,8 +119,13 @@ const Profile = () => {
             }}
           />
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.TextSection}>
-          <Text style={{ fontSize: 18 }}>Bài Đăng của tôi</Text>
+          <View style={{ flexDirection: 'row' }}>
+            <Image source={IMGS.pic} style={{ width: 24, height: 24 }} />
+            <Text style={{ fontSize: 18, marginLeft: 10 }}>Bài Đăng của tôi</Text>
+          </View>
+
           <Image
             source={IMGS.nextpage}
             style={{
@@ -121,8 +135,14 @@ const Profile = () => {
             }}
           />
         </TouchableOpacity>
+
+
         <TouchableOpacity style={styles.TextSection}>
-          <Text style={{ fontSize: 18 }}>Thẻ & Ưu đãi</Text>
+          <View style={{ flexDirection: 'row' }}>
+            <Image source={IMGS.card} style={{ width: 24, height: 24 }} />
+            <Text style={{ fontSize: 18, marginLeft: 10 }}>Thẻ & Ưu đãi</Text>
+          </View>
+
           <Image
             source={IMGS.nextpage}
             style={{
@@ -132,6 +152,8 @@ const Profile = () => {
             }}
           />
         </TouchableOpacity>
+
+
         <View
           style={{
             flexDirection: "row",
@@ -143,7 +165,11 @@ const Profile = () => {
           <TouchableOpacity
             style={{ padding: 15, paddingLeft: 0, marginLeft: 10 }}
           >
-            <Text style={{ fontSize: 18 }}>Thư viện nhãn</Text>
+            <View style={{ flexDirection: 'row' }}>
+              <Image source={IMGS.smile} style={{ width: 24, height: 24 }} />
+              <Text style={{ fontSize: 18, marginLeft: 10 }}>Thư viện nhãn</Text>
+            </View>
+
           </TouchableOpacity>
           <Image
             source={IMGS.nextpage}
@@ -155,6 +181,8 @@ const Profile = () => {
           />
         </View>
       </View>
+
+
       <TouchableOpacity
         style={{
           marginTop: 6,
@@ -163,10 +191,15 @@ const Profile = () => {
           alignItems: "center",
           flexDirection: "row",
           justifyContent: "space-between",
+          paddingLeft: 10,
         }}
         onPress={handleLogout}
       >
-        <Text style={{ fontSize: 18, marginLeft: 10 }}>Cài đặt</Text>
+        <View style={{ flexDirection: 'row' }}>
+          <Image source={IMGS.setting} style={{ width: 24, height: 24 }} />
+          <Text style={{ fontSize: 18, marginLeft: 10 }}>Cài đặt</Text>
+        </View>
+
         <Image
           source={IMGS.nextpage}
           style={{
