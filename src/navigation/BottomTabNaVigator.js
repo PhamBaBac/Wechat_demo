@@ -4,9 +4,9 @@ import { useNavigation } from "@react-navigation/native";
 import { ROUTES, IMGS, COLORS } from "../constants";
 import { Home, PhoneBook, Profile, discover } from "../screens";
 import { Image, View, Text, Pressable, TextInput } from "react-native";
-
+// import { MaterialIcons } from '@expo/vector-icons';
 import { ContextApp } from "../context/contextApp";
-
+import Ionicons from "react-native-vector-icons/Ionicons";
 const Tab = createBottomTabNavigator();
 
 function BottomTabNavigator({}) {
@@ -21,27 +21,30 @@ function BottomTabNavigator({}) {
       screenOptions={({ route }) => ({
         tabBarStyle: {
           backgroundColor: theme.backgroundColor[2],
+          height: 60,
         },
         tabBarActiveTintColor: COLORS.green,
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconImage;
+        tabBarLabelStyle: {
+          fontSize: 12,
+          marginBottom: 5,
+        },
+        tabBarIconStyle: {
+          marginTop: 8,
+        },
+        tabBarIcon: ({ focused, color }) => {
+          let iconName;
 
           if (route.name === ROUTES.HOME_CHAT) {
-            iconImage = focused ? IMGS.chat : IMGS.chat;
+            iconName = focused ? "ios-chatbubbles" : "ios-chatbubbles-outline";
           } else if (route.name === ROUTES.PHONEBOOK) {
-            iconImage = focused ? IMGS.phoneBook : IMGS.phoneBook;
+            iconName = focused ? "ios-people" : "ios-people-outline";
           } else if (route.name === ROUTES.PROFILE) {
-            iconImage = focused ? IMGS.profile : IMGS.profile;
+            iconName = focused ? "ios-person" : "ios-person-outline";
           } else if (route.name === ROUTES.DISCOVER) {
-            iconImage = focused ? IMGS.compass : IMGS.compass;
+            iconName = focused ? "ios-compass" : "ios-compass-outline";
           }
 
-          return (
-            <Image
-              source={iconImage}
-              style={{ width: size, height: size, tintColor: color }}
-            />
-          );
+          return <Ionicons name={iconName} size={26} color={color} />;
         },
       })}
       tabBarOptions={{
@@ -57,20 +60,14 @@ function BottomTabNavigator({}) {
               style={{ flex: 1, flexDirection: "row", alignItems: "center" }}
             >
               <Pressable onPress={handleSearchClick}>
-                <Image
-                  source={IMGS.search}
-                  style={{ width: 20, height: 20, resizeMode: "contain" }}
-                />
+                <Ionicons name="ios-search" size={24} color="black" />
               </Pressable>
               <Pressable>
-                <Image
-                  source={IMGS.add}
-                  style={{
-                    width: 20,
-                    height: 20,
-                    resizeMode: "contain",
-                    marginHorizontal: 20,
-                  }}
+                <Ionicons
+                  name="ios-add-circle"
+                  size={24}
+                  color="black"
+                  style={{ marginHorizontal: 20 }}
                 />
               </Pressable>
             </View>
@@ -120,21 +117,14 @@ function BottomTabNavigator({}) {
               style={{ flex: 1, flexDirection: "row", alignItems: "center" }}
             >
               <Pressable onPress={handleSearchClick}>
-                <Image source={IMGS.search} style={{ width: 20, height: 20 }} />
+                <Ionicons  name="ios-search" size={24} color="black" />
               </Pressable>
-              <Pressable
-                onPress={() => {
-                  navigation.navigate(ROUTES.ADD_PHONEBOOK);
-                  handleAddContact(newContact);
-                }}
-              >
-                <Image
-                  source={IMGS.add}
-                  style={{
-                    width: 20,
-                    height: 20,
-                    marginHorizontal: 20,
-                  }}
+              <Pressable>
+                <Ionicons
+                  name="ios-add-circle"
+                  size={24}
+                  color="black"
+                  style={{ marginHorizontal: 20 }}
                 />
               </Pressable>
             </View>
