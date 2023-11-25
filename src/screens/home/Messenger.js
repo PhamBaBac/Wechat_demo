@@ -49,7 +49,6 @@ const Home = () => {
 export default Home;
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
     alignItems: 'center', 
     justifyContent: 'center'
   },
@@ -73,9 +72,7 @@ const styles = StyleSheet.create({
   TextSection:{
     flexDirection: 'column', 
     justifyContent: 'center', 
-    padding: 15,
-    paddingLeft: 0,
-    marginLeft: 10,
+    marginLeft: 20,
     width: 300,
     borderBottomWidth: 1,
     borderBottomColor: '#cccccc',

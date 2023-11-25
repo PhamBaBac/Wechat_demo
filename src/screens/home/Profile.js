@@ -17,7 +17,7 @@ const Profile = () => {
   const navigation = useNavigation();
   const { accounts, theme } = useContext(ContextApp);
   const currentUser = accounts.length > 0 ? accounts[0] : null;
-  const handleLogout = () => {
+  const handleSetting = () => {
     navigation.navigate(ROUTES.SETTING);
   };
 
@@ -94,7 +94,6 @@ const Profile = () => {
           flexDirection: "row",
           justifyContent: "space-between",
         }}
-        onPress={handleLogout}
       >
         <View style={{ flexDirection: "row", paddingLeft: 10 }}>
           <Image source={IMGS.speech} style={{ width: 24, height: 24 }} />
@@ -221,7 +220,7 @@ const Profile = () => {
           justifyContent: "space-between",
           paddingLeft: 10,
         }}
-        onPress={handleLogout}
+        onPress={handleSetting}
       >
         <View style={{ flexDirection: "row" }}>
           <Image source={IMGS.setting} style={{ width: 24, height: 24 }} />

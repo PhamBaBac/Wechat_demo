@@ -8,17 +8,19 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import { COLORS, IMGS, ROUTES } from "../../constants";
+import { COLORS, IMGS } from "../../constants";
 import { ScrollView } from "react-native";
+import { ContextApp } from "../../context/contextApp";
 
 const discover = () => {
+  const { theme } = useContext(ContextApp);
   return (
-    <ScrollView>
-      <View style={{ backgroundColor: COLORS.gray }}>
+    <ScrollView style={{backgroundColor: theme.backgroundColor[0] , flex: 1}} >
+      <View style={{ backgroundColor: theme.backgroundColor[0] }}>
         <TouchableOpacity
           style={{
             height: 50,
-            backgroundColor: COLORS.white,
+            backgroundColor: theme.backgroundColor[1],
             alignItems: "center",
             flexDirection: "row",
             justifyContent: "space-between",
@@ -26,7 +28,7 @@ const discover = () => {
         >
           <View style={{ flexDirection: "row", paddingLeft: 10 }}>
             <Image source={IMGS.shutter} style={{ width: 24, height: 24 }} />
-            <Text style={{ fontSize: 18, marginLeft: 10 }}>Moment</Text>
+            <Text style={{ fontSize: 18, marginLeft: 10, color: theme.color }}>Moment</Text>
           </View>
 
           <Image
@@ -39,7 +41,7 @@ const discover = () => {
             }}
           />
         </TouchableOpacity>
-        <View style={{ backgroundColor: COLORS.white, marginTop: 6 }}>
+        <View style={{ backgroundColor: theme.backgroundColor[1], marginTop: 6 }}>
           <View
             style={{
               flexDirection: "row",
@@ -51,7 +53,7 @@ const discover = () => {
               style={{ width: 24, height: 24, marginLeft: 10 }}
             />
             <TouchableOpacity style={styles.TextSection}>
-              <Text style={{ fontSize: 18 }}>Scan QR Code</Text>
+              <Text style={{ fontSize: 18,  color: theme.color }}>Scan QR Code</Text>
               <Image
                 source={IMGS.nextpage}
                 style={{
@@ -68,7 +70,7 @@ const discover = () => {
               alignItems: "center",
               justifyContent: "space-between",
               paddingRight: 15,
-              backgroundColor: COLORS.white,
+              backgroundColor: theme.backgroundColor[1]
             }}
           >
             <TouchableOpacity
@@ -76,7 +78,7 @@ const discover = () => {
             >
               <View style={{ flexDirection: "row" }}>
                 <Image source={IMGS.shake} style={{ width: 24, height: 24 }} />
-                <Text style={{ fontSize: 18, marginLeft: 10 }}>Shake</Text>
+                <Text style={{ fontSize: 18, marginLeft: 10,  color: theme.color}}>Shake</Text>
               </View>
             </TouchableOpacity>
             <Image
@@ -89,7 +91,7 @@ const discover = () => {
             />
           </View>
         </View>
-        <View style={{ backgroundColor: COLORS.white, marginTop: 6 }}>
+        <View style={{  backgroundColor: theme.backgroundColor[1], marginTop: 6 }}>
           <View
             style={{
               flexDirection: "row",
@@ -101,7 +103,7 @@ const discover = () => {
               style={{ width: 24, height: 24, marginLeft: 10 }}
             />
             <TouchableOpacity style={styles.TextSection}>
-              <Text style={{ fontSize: 18 }}>Top Stories</Text>
+              <Text style={{ fontSize: 18,  color: theme.color }}>Top Stories</Text>
               <Image
                 source={IMGS.nextpage}
                 style={{
@@ -118,7 +120,7 @@ const discover = () => {
               alignItems: "center",
               justifyContent: "space-between",
               paddingRight: 15,
-              backgroundColor: COLORS.white,
+              backgroundColor: theme.backgroundColor[1],
             }}
           >
             <TouchableOpacity
@@ -129,7 +131,7 @@ const discover = () => {
                   source={IMGS.searchIcon}
                   style={{ width: 24, height: 24 }}
                 />
-                <Text style={{ fontSize: 18, marginLeft: 10 }}>search</Text>
+                <Text style={{ fontSize: 18, marginLeft: 10,  color: theme.color }}>search</Text>
               </View>
             </TouchableOpacity>
             <Image
@@ -145,7 +147,7 @@ const discover = () => {
         <TouchableOpacity
           style={{
             height: 50,
-            backgroundColor: COLORS.white,
+            backgroundColor: theme.backgroundColor[1],
             alignItems: "center",
             flexDirection: "row",
             justifyContent: "space-between",
@@ -154,7 +156,7 @@ const discover = () => {
         >
           <View style={{ flexDirection: "row", paddingLeft: 10 }}>
             <Image source={IMGS.team} style={{ width: 24, height: 24 }} />
-            <Text style={{ fontSize: 18, marginLeft: 10 }}>People Nearby</Text>
+            <Text style={{ fontSize: 18, marginLeft: 10,  color: theme.color }}>People Nearby</Text>
           </View>
 
           <Image
@@ -171,7 +173,7 @@ const discover = () => {
         <TouchableOpacity
           style={{
             height: 50,
-            backgroundColor: COLORS.white,
+            backgroundColor: theme.backgroundColor[1],
             alignItems: "center",
             flexDirection: "row",
             justifyContent: "space-between",
@@ -180,7 +182,7 @@ const discover = () => {
         >
           <View style={{ flexDirection: "row", paddingLeft: 10 }}>
             <Image source={IMGS.games} style={{ width: 24, height: 24 }} />
-            <Text style={{ fontSize: 18, marginLeft: 10 }}>Games</Text>
+            <Text style={{ fontSize: 18, marginLeft: 10,  color: theme.color}}>Games</Text>
           </View>
 
           <Image
@@ -197,7 +199,7 @@ const discover = () => {
         <TouchableOpacity
           style={{
             height: 50,
-            backgroundColor: COLORS.white,
+            backgroundColor: theme.backgroundColor[1],
             alignItems: "center",
             flexDirection: "row",
             justifyContent: "space-between",
@@ -206,7 +208,7 @@ const discover = () => {
         >
           <View style={{ flexDirection: "row", paddingLeft: 10 }}>
             <Image source={IMGS.program} style={{ width: 24, height: 24 }} />
-            <Text style={{ fontSize: 18, marginLeft: 10 }}>Mini Programs</Text>
+            <Text style={{ fontSize: 18, marginLeft: 10,  color: theme.color }}>Mini Programs</Text>
           </View>
 
           <Image
