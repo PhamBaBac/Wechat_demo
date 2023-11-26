@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext} from "react";
 import {
   StyleSheet,
   Text,
@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 import { COLORS, IMGS, ROUTES } from "../../constants";
-import QRCode from "react-native-qrcode-svg";
+import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 
 import { ContextApp } from "../../context/contextApp";
@@ -56,7 +56,7 @@ const Profile = () => {
               Wechat ID: {currentUser ? currentUser.wechatId : ""}
             </Text>
             <View style={{ marginLeft: 100 }}>
-              <QRCode size={16} color="black" backgroundColor="white" />
+              <Ionicons name="ios-qr-code" size={18} color="black" />
             </View>
             <Image
               source={IMGS.nextpage}
@@ -64,7 +64,7 @@ const Profile = () => {
                 width: 18,
                 height: 18,
                 borderRadius: 15,
-                marginLeft: 6
+                marginLeft: 6,
               }}
             />
           </View>
@@ -161,8 +161,11 @@ const Profile = () => {
             />
           </TouchableOpacity>
         </View>
-        <View style={{ flexDirection: "row", alignItems:'center' }}>
-          <Image source={IMGS.card} style={{ width: 24, height: 24, marginLeft: 10, }} />
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <Image
+            source={IMGS.card}
+            style={{ width: 24, height: 24, marginLeft: 10 }}
+          />
           <TouchableOpacity style={styles.TextSection}>
             <Text style={{ fontSize: 18, color: theme.color }}>
               Thẻ & Ưu đãi
@@ -254,6 +257,6 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
     marginLeft: 10,
     borderBottomWidth: 1,
-    borderBottomColor: "#cccccc",
+    borderBottomColor: COLORS.gray,
   },
 });

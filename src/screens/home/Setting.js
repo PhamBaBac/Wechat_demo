@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   ScrollView,
+  Pressable,
 } from "react-native";
 import { COLORS, IMGS, ROUTES } from "../../constants";
 import { useNavigation } from "@react-navigation/native";
@@ -22,18 +23,20 @@ const Setting = () => {
 
   const [darkMode, setDarkMode] = useState(false);
   return (
-    <ScrollView style={{ flex: 1, backgroundColor:  theme.backgroundColor[0] }}>
-      <TouchableOpacity
-      onPress={() => navigation.navigate(ROUTES.RESET_PASS)} 
+    <ScrollView style={{ flex: 1, backgroundColor: theme.backgroundColor[0] }}>
+      <Pressable
+        onPress={() => navigation.navigate(ROUTES.RESET_PASS)}
         style={{
           height: 50,
-          backgroundColor:  theme.backgroundColor[1],
+          backgroundColor: theme.backgroundColor[1],
           alignItems: "center",
           flexDirection: "row",
           justifyContent: "space-between",
         }}
       >
-        <Text style={{ fontSize: 18, marginLeft: 10, color: theme.color }}>Mật khẩu</Text>
+        <Text style={{ fontSize: 18, marginLeft: 10, color: theme.color }}>
+          Mật khẩu
+        </Text>
         <Image
           source={IMGS.nextpage}
           style={{
@@ -43,10 +46,17 @@ const Setting = () => {
             marginRight: 15,
           }}
         />
-      </TouchableOpacity>
-      <View style={[{ backgroundColor: COLORS.white, marginTop: 6 },{ backgroundColor:  theme.backgroundColor[1]}]}>
-        <TouchableOpacity style={styles.TextSection}>
-          <Text style={{ fontSize: 18, color: theme.color }}>Thông báo tin nhắn</Text>
+      </Pressable>
+      <View
+        style={[
+          { backgroundColor: COLORS.white, marginTop: 6 },
+          { backgroundColor: theme.backgroundColor[1] },
+        ]}
+      >
+        <Pressable style={styles.TextSection}>
+          <Text style={{ fontSize: 18, color: theme.color }}>
+            Thông báo tin nhắn
+          </Text>
           <Image
             source={IMGS.nextpage}
             style={{
@@ -55,8 +65,8 @@ const Setting = () => {
               borderRadius: 15,
             }}
           />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.TextSection}>
+        </Pressable>
+        <Pressable style={styles.TextSection}>
           <Text style={{ fontSize: 18, color: theme.color }}>Trò chuyện</Text>
           <Image
             source={IMGS.nextpage}
@@ -66,23 +76,23 @@ const Setting = () => {
               borderRadius: 15,
             }}
           />
-        </TouchableOpacity>
+        </Pressable>
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
             paddingRight: 15,
-            backgroundColor:  theme.backgroundColor[1]
+            backgroundColor: theme.backgroundColor[1],
           }}
         >
-          <TouchableOpacity
+          <Pressable
             style={{ padding: 15, paddingLeft: 0, marginLeft: 10 }}
           >
             <Text style={{ fontSize: 18, color: theme.color }}>Chế độ tối</Text>
-          </TouchableOpacity>
+          </Pressable>
           <Switch
-            trackColor={{ false: COLORS.gray, true: COLORS.green }}
+            trackColor={{ false: COLORS.gray, true: COLORS.blueLight }}
             value={darkMode}
             onValueChange={(value) => {
               setDarkMode(value);
@@ -91,18 +101,20 @@ const Setting = () => {
           />
         </View>
       </View>
-      <TouchableOpacity
+      <Pressable
         style={{
           marginTop: 6,
           height: 50,
-          backgroundColor:  theme.backgroundColor[1],
+          backgroundColor: theme.backgroundColor[1],
           alignItems: "center",
           justifyContent: "center",
         }}
         onPress={handleLogout}
       >
-        <Text style={{ fontSize: 18, marginLeft: 10,color: theme.color }}>Đăng xuất</Text>
-      </TouchableOpacity>
+        <Text style={{ fontSize: 18, marginLeft: 10, color: theme.color }}>
+          Đăng xuất
+        </Text>
+      </Pressable>
     </ScrollView>
   );
 };
