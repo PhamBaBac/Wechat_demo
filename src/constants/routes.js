@@ -17,5 +17,5 @@ export default {
   ADD_PHONEBOOK: 'Thêm Danh Bạ',
   SETTING: 'Cài Đặt',
   RESET_PASS: 'Đặt Lại Mật Khẩu',
-
+  PERSONAL_SETTING: 'Cài đặt',
 };

@@ -191,11 +191,11 @@ const PhoneBook = () => {
                       source={item.userImg}
                       style={{ width: 40, height: 40 }}
                     />
-                    <TouchableOpacity style={styles.TextSection}>
+                    <Text style={styles.TextSection}>
                       <Text style={{ fontSize: 18, color: theme.color }}>
                         {item.userName}
                       </Text>
-                    </TouchableOpacity>
+                    </Text>
                   </TouchableOpacity>
                 )}
               />

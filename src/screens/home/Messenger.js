@@ -23,7 +23,7 @@ const Home = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={[styles.container,{backgroundColor: theme.backgroundColor[1]}]}>
-            <TouchableOpacity onPress={() => navigation.navigate(ROUTES.CHAT_SCREEN,{userName: item.userName,})}>
+            <TouchableOpacity onPress={() => navigation.navigate(ROUTES.CHAT_SCREEN,{userName: item.userName, userImg: item.userImg})}>
             <View style={styles.card}>
               <View style={styles.UserInfo}>
                 <View style={styles.UserImgWrapper}>

@@ -1,15 +1,16 @@
 import React from "react";
 import {
-  StyleSheet,
   ScrollView,
   View,
   Text,
   Image,
   TouchableOpacity,
 } from "react-native";
-import { COLORS } from "../../constants";
+import { COLORS,ROUTES } from "../../constants";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
 const Personal = ({ route }) => {
+  const navigation = useNavigation();
   const { profiles } = route.params;
   return (
     <ScrollView style={{ flex: 1, backgroundColor: COLORS.gray }}>
@@ -43,17 +44,19 @@ const Personal = ({ route }) => {
               borderWidth: 1,
               borderRadius: 20,
               justifyContent: "center",
+              alignItems: "center",
               marginVertical: 15,
             }}
           >
-            <Text style={{ fontSize: 18 }}>+</Text>
+            <Text style={{ fontSize: 18, marginRight: 4 }}>+</Text>
             <Text style={{ fontSize: 18 }}>Trạng thái</Text>
           </TouchableOpacity>
         </View>
       </View>
       <TouchableOpacity
+      onPress={() => navigation.navigate(ROUTES.CHAT_SCREEN,{userName: profiles.userName, userImg: profiles.userImg})}
         style={{
-          marginTop: 20,
+          marginTop: 6,
           height: 50,
           alignItems: "center",
           justifyContent: "center",

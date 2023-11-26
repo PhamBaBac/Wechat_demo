@@ -4,11 +4,13 @@ import { COLORS, IMGS } from "../../constants";
 import { View, TextInput } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-
+import { useRoute } from "@react-navigation/native";
 const ChatScreen = () => {
   const [messages, setMessages] = useState([]);
-
+  const route = useRoute();
   useEffect(() => {
+    const userImg = route.params.userImg;
+    console.log(userImg);
     setMessages([
       {
         _id: 1,
@@ -17,7 +19,7 @@ const ChatScreen = () => {
         user: {
           _id: 2,
           name: "React Native",
-          avatar: IMGS.human,
+          avatar: userImg,
         },
       },
     ]);

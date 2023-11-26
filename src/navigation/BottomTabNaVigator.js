@@ -18,7 +18,6 @@ import {
 const Tab = createBottomTabNavigator();
 
 function BottomTabNavigator({}) {
-  const navigation = useNavigation();
   const { setSearchText, theme } = useContext(ContextApp);
   const [isSearchVisible, setSearchVisible] = useState(false);
   const [isAddVisible, setAddVisible] = useState(false);
