@@ -60,6 +60,7 @@ const PhoneBook = () => {
                 alignItems: "center",
                 marginLeft: 10,
                 borderRadius: 5,
+                marginTop: 4,
               }}
             >
               <Icon name="ios-people" size={24} color="white" />
@@ -122,9 +123,7 @@ const PhoneBook = () => {
               backgroundColor: theme.backgroundColor[1],
             }}
           >
-            <TouchableOpacity
-              style={{marginVertical: 6, marginLeft: 10 }}
-            >
+            <TouchableOpacity style={{ marginVertical: 6, marginLeft: 10 }}>
               <View
                 style={{
                   flexDirection: "row",
@@ -168,7 +167,6 @@ const PhoneBook = () => {
                   fontSize: 14,
                   marginLeft: 10,
                   color: theme.color,
-                  fontWeight: "bold",
                   marginVertical: 8,
                 }}
               >
@@ -182,7 +180,7 @@ const PhoneBook = () => {
                   <TouchableOpacity
                     onPress={() => handleUserPress(item)}
                     style={{
-                      height: 60,
+                      height: 54,
                       backgroundColor: theme.backgroundColor[1],
                       alignItems: "center",
                       flexDirection: "row",
@@ -193,15 +191,11 @@ const PhoneBook = () => {
                       source={item.userImg}
                       style={{ width: 40, height: 40 }}
                     />
-                    <Text
-                      style={{
-                        fontSize: 18,
-                        marginLeft: 10,
-                        color: theme.color,
-                      }}
-                    >
-                      {item.userName}
-                    </Text>
+                    <TouchableOpacity style={styles.TextSection}>
+                      <Text style={{ fontSize: 18, color: theme.color }}>
+                        {item.userName}
+                      </Text>
+                    </TouchableOpacity>
                   </TouchableOpacity>
                 )}
               />
@@ -222,6 +216,6 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
     marginLeft: 10,
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.gray,
+    borderBottomColor: COLORS.grayLight,
   },
 });

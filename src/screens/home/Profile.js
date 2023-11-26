@@ -257,6 +257,6 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
     marginLeft: 10,
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.gray,
+    borderBottomColor: COLORS.grayLight,
   },
 });

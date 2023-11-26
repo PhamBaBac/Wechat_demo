@@ -130,6 +130,6 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
     marginLeft: 10,
     borderBottomWidth: 1,
-    borderBottomColor: "#cccccc",
+    borderBottomColor: COLORS.grayLight,
   },
 });

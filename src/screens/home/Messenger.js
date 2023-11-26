@@ -1,5 +1,5 @@
 import React,{useContext} from 'react';
-import { Text, SafeAreaView, FlatList, View, Image, TouchableOpacity,StyleSheet  } from 'react-native';
+import { Text, SafeAreaView, FlatList, View, Image, TouchableOpacity,StyleSheet, ScrollView  } from 'react-native';
 import { COLORS, ROUTES } from '../../constants';
 import { useNavigation } from "@react-navigation/native";
 import { ContextApp } from '../../context/contextApp';
@@ -13,7 +13,7 @@ const Home = () => {
   );
 
   return (
-    <SafeAreaView
+    <ScrollView
       style={{
         flex: 1,
         backgroundColor: theme.backgroundColor[3],
@@ -42,8 +42,7 @@ const Home = () => {
           </View>
         )}
       />
-
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 export default Home;
@@ -67,7 +66,8 @@ const styles = StyleSheet.create({
   UserImg:{
     width:50, 
     height:50, 
-    borderRadius:25,
+    borderRadius: 5,
+    marginBottom: 8,
   },
   TextSection:{
     flexDirection: 'column', 
@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
   },
   MessageText:{
     fontSize: 14,
-    color: '#333333',
+    color: COLORS.gray,
+    paddingBottom: 8
   }
 });
