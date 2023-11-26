@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { Bubble, GiftedChat,Send } from "react-native-gifted-chat";
+import { Bubble, GiftedChat, Send, InputToolbar } from "react-native-gifted-chat";
 import { COLORS, IMGS } from "../../constants";
-import { View } from "react-native";
+import { View, TextInput } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+
 const ChatScreen = () => {
   const [messages, setMessages] = useState([]);
 
@@ -19,23 +20,15 @@ const ChatScreen = () => {
           avatar: IMGS.human,
         },
       },
-      {
-        _id: 2,
-        text: "Hello world",
-        createdAt: new Date(),
-        user: {
-          _id: 1,
-          name: "React Native",
-          avatar: IMGS.human,
-        },
-      },
     ]);
   }, []);
-  const onSend = useCallback((messages = []) => {
+
+  const onSend = useCallback((newMessages = []) => {
     setMessages((previousMessages) =>
-      GiftedChat.append(previousMessages, messages)
+      GiftedChat.append(previousMessages, newMessages)
     );
   }, []);
+
   const renderBubble = (props) => {
     return (
       <Bubble
@@ -53,22 +46,20 @@ const ChatScreen = () => {
       />
     );
   };
+
   const scrollToBottomComponent = () => {
     return (
-      <FontAwesome
-      name="angle-double-down"
-      size={22}
-      color='#3333'
-    />
+      <FontAwesome name="angle-double-down" size={22} color="#3333" />
     );
-  }
+  };
+
   const renderSend = (props) => {
     return (
       <Send {...props}>
         <View>
           <MaterialCommunityIcons
             name="send-circle"
-            style={{ marginBottom: 5, marginRight: 5 }}
+            style={{ marginBottom: 5, marginRight: 5, }}
             size={32}
             color={COLORS.green}
           />
@@ -76,19 +67,36 @@ const ChatScreen = () => {
       </Send>
     );
   };
+
+  const renderInputToolbar = (props) => {
+    return (
+      <InputToolbar
+        {...props}
+        containerStyle={{
+          backgroundColor: COLORS.white,
+          borderWidth: 1,
+          borderColor: COLORS.grayLight,
+        }}
+      />
+    );
+  };
+
   return (
-    <GiftedChat
-      messages={messages}
-      onSend={(messages) => onSend(messages)}
-      user={{
-        _id: 1,
-      }}
-      renderBubble={renderBubble}
-      alwaysShowSend
-      renderSend={renderSend}
-      scrollToBottom
-      scrollToBottomComponent={scrollToBottomComponent}
-    />
+    <View style={{ flex: 1, backgroundColor: COLORS.white }}>
+      <GiftedChat
+        messages={messages}
+        onSend={(newMessages) => onSend(newMessages)}
+        user={{
+          _id: 1,
+        }}
+        renderBubble={renderBubble}
+        alwaysShowSend
+        renderSend={renderSend}
+        scrollToBottom
+        scrollToBottomComponent={scrollToBottomComponent}
+        renderInputToolbar={renderInputToolbar}
+      />
+    </View>
   );
 };
 

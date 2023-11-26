@@ -13,4 +13,5 @@ export default {
   blue: "#04389F",
   blueLight: "#009688",
   red: "#FF0000",
+  orange: "#FFA500",
 };

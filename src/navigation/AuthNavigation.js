@@ -3,8 +3,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import {
   Default,
   Login,
-  EditProfile,
-  AddPhoneBook,
   ChatScreen,
   PersonalChat,
   RegisterScreen,
@@ -55,32 +53,27 @@ function AuthNavigation() {
           headerShown: false,
         }}
       />
-      <Stack.Screen
-        name={ROUTES.ADD_PHONEBOOK}
-        component={AddPhoneBook}
-        options={{
-          headerShown: true,
-          headerStyle: {
-            backgroundColor: theme.backgroundColor[2],
-          },
-          headerTintColor: theme.color,
-        }}
-      />
-      <Stack.Screen
-        name={ROUTES.EDIT_PROFILE}
-        component={EditProfile}
-        options={{ headerShown: true }}
-      />
+
       <Stack.Screen
         name={ROUTES.CHAT_SCREEN}
         component={ChatScreen}
+        
         options={({ route }) => ({
           title: route.params.userName,
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: COLORS.gray,
           },
+          headerLeft: () => (
+            <Pressable
+              onPress={() => navigation.goBack()}
+              style={{ marginLeft: 10 }}
+            >
+              <Image source={IMGS.backpage} style={{ width: 20, height: 20 }} />
+            </Pressable>
+          ),
         })}
+        
       />
       <Stack.Screen
         name={ROUTES.PERSONAL_CHAT}
@@ -90,6 +83,14 @@ function AuthNavigation() {
           headerStyle: {
             backgroundColor: COLORS.gray,
           },
+          headerLeft: () => (
+            <Pressable
+              onPress={() => navigation.goBack()}
+              style={{ marginLeft: 10 }}
+            >
+              <Image source={IMGS.backpage} style={{ width: 20, height: 20 }} />
+            </Pressable>
+          ),
         }}
       />
       <Stack.Screen

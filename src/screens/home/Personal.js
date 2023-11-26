@@ -7,8 +7,8 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { COLORS, IMGS } from "../../constants";
-
+import { COLORS } from "../../constants";
+import Ionicons from "react-native-vector-icons/Ionicons";
 const Personal = ({ route }) => {
   const { profiles } = route.params;
   return (
@@ -58,9 +58,25 @@ const Personal = ({ route }) => {
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: COLORS.white,
+          borderBottomWidth: 1,
+          borderBottomColor: COLORS.grayLight,
+          flexDirection: "row",
         }}
       >
+       <Ionicons name="ios-chatbubbles-outline" size={24} color={COLORS.black} style={{ marginRight: 10 }} />
         <Text style={{ fontSize: 18 }}>Gửi tin nhắn</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{
+          height: 50,
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: COLORS.white,
+          flexDirection: "row",
+        }}
+      >
+        <Ionicons name="ios-videocam-outline" size={24} color={COLORS.black} style={{ marginRight: 10 }} />
+        <Text style={{ fontSize: 18 }}>Cuộc gọi video và thoại</Text>
       </TouchableOpacity>
     </ScrollView>
   );

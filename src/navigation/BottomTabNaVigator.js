@@ -101,11 +101,12 @@ function BottomTabNavigator({}) {
                     style={{
                       width: 200,
                       height: 30,
-                      borderColor: theme.color,
+                      borderColor: theme.color[0],
                       borderWidth: 1,
-                      borderRadius: 5,
+                      borderRadius: 20,
                       paddingLeft: 10,
                       color: theme.color,
+                      backgroundColor: theme.backgroundColor[1],
                     }}
                     onChangeText={(text) => setSearchText(text)}
                     placeholder="Search"
@@ -160,9 +161,10 @@ function BottomTabNavigator({}) {
                       height: 30,
                       borderColor: "gray",
                       borderWidth: 1,
-                      borderRadius: 5,
+                      borderRadius: 20,
                       paddingLeft: 10,
                       color: theme.color,
+                      backgroundColor: theme.backgroundColor[1],
                     }}
                     onChangeText={(text) => setSearchText(text)}
                     placeholder="Search"
@@ -320,7 +322,7 @@ const styles = StyleSheet.create({
     width: 180,
     position: "absolute",
     top: 0,
-    right: -8,
+    right: -10,
   },
   modalView: {
     backgroundColor: COLORS.black,

@@ -7,8 +7,6 @@ export { default as Profile } from './home/Profile';
 export { default as Setting } from './home/Setting';
 export { default as ResetPass } from './home/ResetPass';
 
-export { default as AddPhoneBook } from './PhoneBook/addPhoneBook';
-export { default as EditProfile } from './Profile/EditProfile';
 // Auth Screens
 export { default as Login } from './auth/Login';
 export { default as Default } from './auth/defaultScreen';

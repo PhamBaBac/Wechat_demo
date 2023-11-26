@@ -11,7 +11,7 @@ export default {
   HOME_CHAT: 'Trò Chuyện',
   HOME_DRAWER: 'Home Drawer',
   CHAT_SCREEN: 'Chat Screen',
-  PERSONAL_CHAT: 'Personal Chat',
+  PERSONAL_CHAT: 'Personal',
   PHONEBOOK: 'Danh Bạ',
   PROFILE: 'Tôi',
   ADD_PHONEBOOK: 'Thêm Danh Bạ',
