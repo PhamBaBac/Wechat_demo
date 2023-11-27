@@ -3,14 +3,13 @@ import {
   StyleSheet,
   Text,
   Image,
-  TouchableOpacity,
   View,
   ScrollView,
   Pressable,
 } from "react-native";
 import { COLORS, IMGS, ROUTES } from "../../constants";
 import { useNavigation } from "@react-navigation/native";
-
+import Ionicons from "react-native-vector-icons/Ionicons";
 import { ContextApp } from "../../context/contextApp";
 import { Switch } from "react-native";
 import { EventRegister } from "react-native-event-listeners";
@@ -37,15 +36,7 @@ const Setting = () => {
         <Text style={{ fontSize: 18, marginLeft: 10, color: theme.color }}>
           Mật khẩu
         </Text>
-        <Image
-          source={IMGS.nextpage}
-          style={{
-            width: 18,
-            height: 18,
-            borderRadius: 15,
-            marginRight: 15,
-          }}
-        />
+        <Ionicons style={{marginRight: 15}} name="ios-chevron-forward" size={20} color={theme.color} />
       </Pressable>
       <View
         style={[
@@ -57,25 +48,11 @@ const Setting = () => {
           <Text style={{ fontSize: 18, color: theme.color }}>
             Thông báo tin nhắn
           </Text>
-          <Image
-            source={IMGS.nextpage}
-            style={{
-              width: 18,
-              height: 18,
-              borderRadius: 15,
-            }}
-          />
+          <Ionicons name="ios-chevron-forward" size={20} color={theme.color} />
         </Pressable>
         <Pressable style={styles.TextSection}>
           <Text style={{ fontSize: 18, color: theme.color }}>Trò chuyện</Text>
-          <Image
-            source={IMGS.nextpage}
-            style={{
-              width: 18,
-              height: 18,
-              borderRadius: 15,
-            }}
-          />
+          <Ionicons name="ios-chevron-forward" size={20} color={theme.color} />
         </Pressable>
         <View
           style={{

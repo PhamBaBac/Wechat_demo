@@ -80,13 +80,13 @@ function BottomTabNavigator({}) {
                 style={{ flex: 1, flexDirection: "row", alignItems: "center" }}
               >
                 <Pressable onPress={handleSearchClick}>
-                  <Ionicons name="ios-search" size={24} color="black" />
+                  <Ionicons name="ios-search" size={24} color={theme.color} />
                 </Pressable>
                 <Pressable onPress={handleAddClick}>
                   <Ionicons
                     name="ios-add-circle"
                     size={24}
-                    color="black"
+                    color={theme.color}
                     style={{ marginHorizontal: 20 }}
                   />
                 </Pressable>
@@ -138,13 +138,13 @@ function BottomTabNavigator({}) {
                 style={{ flex: 1, flexDirection: "row", alignItems: "center" }}
               >
                 <Pressable onPress={handleSearchClick}>
-                  <Ionicons name="ios-search" size={24} color="black" />
+                  <Ionicons name="ios-search" size={24} color={theme.color} />
                 </Pressable>
                 <Pressable onPress={handleAddClick}>
                   <Ionicons
                     name="ios-add-circle"
                     size={24}
-                    color="black"
+                    color={theme.color}
                     style={{ marginHorizontal: 20 }}
                   />
                 </Pressable>

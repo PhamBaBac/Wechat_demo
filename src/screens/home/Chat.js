@@ -1,11 +1,13 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useContext } from "react";
 import { Bubble, GiftedChat, Send, InputToolbar } from "react-native-gifted-chat";
-import { COLORS, IMGS } from "../../constants";
-import { View, TextInput } from "react-native";
+import { COLORS} from "../../constants";
+import { View} from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { useRoute } from "@react-navigation/native";
+import { ContextApp } from "../../context/contextApp";
 const ChatScreen = () => {
+  const { theme } = useContext(ContextApp);
   const [messages, setMessages] = useState([]);
   const route = useRoute();
   useEffect(() => {
@@ -42,7 +44,7 @@ const ChatScreen = () => {
         }}
         textStyle={{
           right: {
-            color: "#fff",
+            color: theme.color,
           },
         }}
       />
@@ -75,7 +77,7 @@ const ChatScreen = () => {
       <InputToolbar
         {...props}
         containerStyle={{
-          backgroundColor: COLORS.white,
+          backgroundColor: theme.backgroundColor[1],
           borderWidth: 1,
           borderColor: COLORS.grayLight,
         }}
@@ -84,7 +86,7 @@ const ChatScreen = () => {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: COLORS.white }}>
+    <View style={{ flex: 1, backgroundColor: theme.backgroundColor[0]}}>
       <GiftedChat
         messages={messages}
         onSend={(newMessages) => onSend(newMessages)}

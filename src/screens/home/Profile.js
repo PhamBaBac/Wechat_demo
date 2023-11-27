@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   Image,
-  TouchableOpacity,
   View,
   ScrollView,
   Pressable,
@@ -57,17 +56,9 @@ const Profile = () => {
               </Text>
             </View>
             <View style={{ marginLeft: 10}}>
-              <Ionicons name="ios-qr-code" size={18} color="black" />
+              <Ionicons name="ios-qr-code" size={18} color={theme.color} />
             </View>
-            <Image
-              source={IMGS.nextpage}
-              style={{
-                width: 18,
-                height: 18,
-                borderRadius: 15,
-                marginLeft: 6,
-              }}
-            />
+            <Ionicons style={{marginLeft: 6}} name="ios-chevron-forward" size={20} color={theme.color} />
           </View>
           <Pressable
             style={{
@@ -102,16 +93,7 @@ const Profile = () => {
             Dịch vụ
           </Text>
         </View>
-
-        <Image
-          source={IMGS.nextpage}
-          style={{
-            width: 18,
-            height: 18,
-            borderRadius: 15,
-            marginRight: 15,
-          }}
-        />
+        <Ionicons style={{marginRight: 16}} name="ios-chevron-forward" size={20} color={theme.color} />
       </Pressable>
       <View style={{ backgroundColor: theme.backgroundColor[1], marginTop: 6 }}>
         <View
@@ -128,14 +110,7 @@ const Profile = () => {
             <Text style={{ fontSize: 18, color: theme.color }}>
               Mục ưa thích
             </Text>
-            <Image
-              source={IMGS.nextpage}
-              style={{
-                width: 18,
-                height: 18,
-                borderRadius: 15,
-              }}
-            />
+            <Ionicons name="ios-chevron-forward" size={20} color={theme.color} />
           </Pressable>
         </View>
         <View
@@ -152,14 +127,7 @@ const Profile = () => {
             <Text style={{ fontSize: 18, color: theme.color }}>
               Bài Đăng của tôi
             </Text>
-            <Image
-              source={IMGS.nextpage}
-              style={{
-                width: 18,
-                height: 18,
-                borderRadius: 15,
-              }}
-            />
+            <Ionicons name="ios-chevron-forward" size={20} color={theme.color} />
           </Pressable>
         </View>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -172,14 +140,7 @@ const Profile = () => {
               Thẻ & Ưu đãi
             </Text>
 
-            <Image
-              source={IMGS.nextpage}
-              style={{
-                width: 18,
-                height: 18,
-                borderRadius: 15,
-              }}
-            />
+            <Ionicons name="ios-chevron-forward" size={20} color={theme.color} />
           </Pressable>
         </View>
         <View
@@ -203,14 +164,7 @@ const Profile = () => {
               </Text>
             </View>
           </Pressable>
-          <Image
-            source={IMGS.nextpage}
-            style={{
-              width: 18,
-              height: 18,
-              borderRadius: 15,
-            }}
-          />
+          <Ionicons name="ios-chevron-forward" size={20} color={theme.color} />
         </View>
       </View>
 
@@ -232,16 +186,7 @@ const Profile = () => {
             Cài đặt
           </Text>
         </View>
-
-        <Image
-          source={IMGS.nextpage}
-          style={{
-            width: 18,
-            height: 18,
-            borderRadius: 15,
-            marginRight: 15,
-          }}
-        />
+        <Ionicons style={{marginRight: 16}} name="ios-chevron-forward" size={20} color={theme.color} />
       </Pressable>
     </ScrollView>
   );

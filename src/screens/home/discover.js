@@ -1,17 +1,15 @@
 import React, { useContext } from "react";
 import {
   Text,
-  SafeAreaView,
-  FlatList,
   View,
   Image,
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import { COLORS, IMGS } from "../../constants";
+import { IMGS } from "../../constants";
 import { ScrollView } from "react-native";
 import { ContextApp } from "../../context/contextApp";
-
+import Ionicons from "react-native-vector-icons/Ionicons";
 const discover = () => {
   const { theme } = useContext(ContextApp);
   return (
@@ -30,16 +28,7 @@ const discover = () => {
             <Image source={IMGS.shutter} style={{ width: 24, height: 24 }} />
             <Text style={{ fontSize: 18, marginLeft: 10, color: theme.color }}>Moment</Text>
           </View>
-
-          <Image
-            source={IMGS.nextpage}
-            style={{
-              width: 18,
-              height: 18,
-              borderRadius: 15,
-              marginRight: 15,
-            }}
-          />
+          <Ionicons style={{marginRight: 14}} name="ios-chevron-forward" size={20} color={theme.color} />
         </TouchableOpacity>
         <View style={{ backgroundColor: theme.backgroundColor[1], marginTop: 6 }}>
           <View
@@ -54,14 +43,7 @@ const discover = () => {
             />
             <TouchableOpacity style={styles.TextSection}>
               <Text style={{ fontSize: 18,  color: theme.color }}>Scan QR Code</Text>
-              <Image
-                source={IMGS.nextpage}
-                style={{
-                  width: 18,
-                  height: 18,
-                  borderRadius: 15,
-                }}
-              />
+              <Ionicons name="ios-chevron-forward" size={20} color={theme.color} />
             </TouchableOpacity>
           </View>
           <View
@@ -81,14 +63,7 @@ const discover = () => {
                 <Text style={{ fontSize: 18, marginLeft: 10,  color: theme.color}}>Shake</Text>
               </View>
             </TouchableOpacity>
-            <Image
-              source={IMGS.nextpage}
-              style={{
-                width: 18,
-                height: 18,
-                borderRadius: 15,
-              }}
-            />
+            <Ionicons name="ios-chevron-forward" size={20} color={theme.color} />
           </View>
         </View>
         <View style={{  backgroundColor: theme.backgroundColor[1], marginTop: 6 }}>
@@ -104,14 +79,7 @@ const discover = () => {
             />
             <TouchableOpacity style={styles.TextSection}>
               <Text style={{ fontSize: 18,  color: theme.color }}>Top Stories</Text>
-              <Image
-                source={IMGS.nextpage}
-                style={{
-                  width: 18,
-                  height: 18,
-                  borderRadius: 15,
-                }}
-              />
+              <Ionicons name="ios-chevron-forward" size={20} color={theme.color} />
             </TouchableOpacity>
           </View>
           <View
@@ -134,14 +102,7 @@ const discover = () => {
                 <Text style={{ fontSize: 18, marginLeft: 10,  color: theme.color }}>search</Text>
               </View>
             </TouchableOpacity>
-            <Image
-              source={IMGS.nextpage}
-              style={{
-                width: 18,
-                height: 18,
-                borderRadius: 15,
-              }}
-            />
+            <Ionicons name="ios-chevron-forward" size={20} color={theme.color} />
           </View>
         </View>
         <TouchableOpacity
@@ -159,15 +120,7 @@ const discover = () => {
             <Text style={{ fontSize: 18, marginLeft: 10,  color: theme.color }}>People Nearby</Text>
           </View>
 
-          <Image
-            source={IMGS.nextpage}
-            style={{
-              width: 18,
-              height: 18,
-              borderRadius: 15,
-              marginRight: 15,
-            }}
-          />
+          <Ionicons style={{marginRight: 16}} name="ios-chevron-forward" size={20} color={theme.color} />
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -185,15 +138,7 @@ const discover = () => {
             <Text style={{ fontSize: 18, marginLeft: 10,  color: theme.color}}>Games</Text>
           </View>
 
-          <Image
-            source={IMGS.nextpage}
-            style={{
-              width: 18,
-              height: 18,
-              borderRadius: 15,
-              marginRight: 15,
-            }}
-          />
+          <Ionicons style={{marginRight: 16}} name="ios-chevron-forward" size={20} color={theme.color} />
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -210,16 +155,7 @@ const discover = () => {
             <Image source={IMGS.program} style={{ width: 24, height: 24 }} />
             <Text style={{ fontSize: 18, marginLeft: 10,  color: theme.color }}>Mini Programs</Text>
           </View>
-
-          <Image
-            source={IMGS.nextpage}
-            style={{
-              width: 18,
-              height: 18,
-              borderRadius: 15,
-              marginRight: 15,
-            }}
-          />
+          <Ionicons style={{marginRight: 16}} name="ios-chevron-forward" size={20} color={theme.color} />
         </TouchableOpacity>
       </View>
     </ScrollView>

@@ -2,16 +2,16 @@ import React, { useState, useContext } from "react";
 import {
   StyleSheet,
   Text,
-  Image,
   View,
   ScrollView,
   Pressable,
 } from "react-native";
-import { COLORS, IMGS, ROUTES } from "../../constants";
+import { COLORS, ROUTES } from "../../constants";
 import Modal from "react-native-modal";
 import { ContextApp } from "../../context/contextApp";
 import { useNavigation } from "@react-navigation/native";
 import { Switch } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
 const PersonalSetting = (route) => {
   const navigation = useNavigation();
   const { theme, updateProfilesAfterRegistration } = useContext(ContextApp);
@@ -56,14 +56,7 @@ const PersonalSetting = (route) => {
           <Text style={{ fontSize: 18, color: theme.color }}>
             Cài nhận xét và dán nhãn
           </Text>
-          <Image
-            source={IMGS.nextpage}
-            style={{
-              width: 18,
-              height: 18,
-              borderRadius: 15,
-            }}
-          />
+          <Ionicons name="ios-chevron-forward" size={20} color={theme.color} />
         </Pressable>
         <View
           style={{
@@ -79,14 +72,7 @@ const PersonalSetting = (route) => {
               Quyền riêng tư
             </Text>
           </Pressable>
-          <Image
-            source={IMGS.nextpage}
-            style={{
-              width: 18,
-              height: 18,
-              borderRadius: 15,
-            }}
-          />
+          <Ionicons name="ios-chevron-forward" size={20} color={theme.color} />
         </View>
       </View>
       <View
@@ -99,14 +85,7 @@ const PersonalSetting = (route) => {
           <Text style={{ fontSize: 18, color: theme.color }}>
             Chia sẻ số liên lạc
           </Text>
-          <Image
-            source={IMGS.nextpage}
-            style={{
-              width: 18,
-              height: 18,
-              borderRadius: 15,
-            }}
-          />
+          <Ionicons name="ios-chevron-forward" size={20} color={theme.color} />
         </Pressable>
         <View
           style={{
@@ -122,14 +101,7 @@ const PersonalSetting = (route) => {
               Thêm vào màn hình
             </Text>
           </Pressable>
-          <Image
-            source={IMGS.nextpage}
-            style={{
-              width: 18,
-              height: 18,
-              borderRadius: 15,
-            }}
-          />
+          <Ionicons name="ios-chevron-forward" size={20} color={theme.color} />
         </View>
       </View>
       <Pressable
@@ -174,14 +146,7 @@ const PersonalSetting = (route) => {
           <Pressable style={{ padding: 12 }}>
             <Text style={{ fontSize: 18, color: theme.color }}>Báo cáo</Text>
           </Pressable>
-          <Image
-            source={IMGS.nextpage}
-            style={{
-              width: 18,
-              height: 18,
-              borderRadius: 15,
-            }}
-          />
+          <Ionicons name="ios-chevron-forward" size={20} color={theme.color} />
         </View>
       </View>
       <Pressable

@@ -23,28 +23,35 @@ const RegisterScreen = () => {
 
   const handleRegister = async () => {
     try {
+      if (!name || !wechatId || !phoneNumber || !password) {
+        setError("Please fill in all required fields");
+        return;
+      }
 
-    if (!name || !wechatId || !phoneNumber || !password) {
-      setError("Please fill in all required fields");
-      return;
-    }
+      const wechatIdCheckUrl = `http://localhost:3000/accounts?wechatId=${wechatId}`;
+      const wechatIdCheckResult = await fetch(wechatIdCheckUrl);
+      const wechatIdCheckData = await wechatIdCheckResult.json();
 
-    const wechatIdCheckUrl = `http://localhost:3000/accounts?wechatId=${wechatId}`;
-    const wechatIdCheckResult = await fetch(wechatIdCheckUrl);
-    const wechatIdCheckData = await wechatIdCheckResult.json();
+      if (wechatIdCheckData.length > 0) {
+        setError("WeChat ID is already in use. Please choose a different one.");
+        return;
+      }
+      if (password.length < 8 || !/[!@#$%^&*(),.?":{}|<>]/.test(password) || !/[a-zA-Z]/.test(password)) {
+        setError(
+          "Password must be at least 8 characters long and contain at least one special character and one letter."
+        );
+        return;
+      }
+      const phoneNumberCheckUrl = `http://localhost:3000/accounts?phone=${phoneNumber}`;
+      const phoneNumberCheckResult = await fetch(phoneNumberCheckUrl);
+      const phoneNumberCheckData = await phoneNumberCheckResult.json();
 
-    if (wechatIdCheckData.length > 0) {
-      setError("WeChat ID is already in use. Please choose a different one.");
-      return;
-    }
-    const phoneNumberCheckUrl = `http://localhost:3000/accounts?phone=${phoneNumber}`;
-    const phoneNumberCheckResult = await fetch(phoneNumberCheckUrl);
-    const phoneNumberCheckData = await phoneNumberCheckResult.json();
-
-    if (phoneNumberCheckData.length > 0) {
-      setError("Phone number is already in use. Please choose a different one.");
-      return;
-    }
+      if (phoneNumberCheckData.length > 0) {
+        setError(
+          "Phone number is already in use. Please choose a different one."
+        );
+        return;
+      }
 
       const url = "http://localhost:3000/accounts";
       const result = await fetch(url, {
@@ -147,67 +154,67 @@ const RegisterScreen = () => {
 export default RegisterScreen;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: "column",
-        justifyContent: "center",
-        backgroundColor: COLORS.white,
-        padding: 20,
-        paddingLeft: 10
-    },
-    title: {
-        fontSize: 18,
-        textAlign: "center",
-        marginBottom: 20,
-        color: COLORS.black,
-    },
-    textName: {
-        fontSize: 18,
-        color: COLORS.black,
-        width: 100,
-    },
-    input: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        height: 44,
-        fontSize: 16,
-        borderBottomWidth: 1,
-        borderBottomColor: COLORS.gray,
-        marginVertical: 10,
-        marginHorizontal: 10,
-    },
-    textInput: {
-        padding: 8,
-        fontSize: 18,
-        color: COLORS.black,
-    },
-    buttonContainer: {
-        alignItems: "center",
-        marginVertical: 20,
-    },
-    button: {
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: COLORS.green,
-        height: 40,
-        width: 180,
-        borderRadius: 8,
-    },
-    buttonText: {
-        fontSize: 16,
-        color: COLORS.white,
-    },
-    error: {
-        margin: 10,
-        color: COLORS.red,
-        textAlign: "center",
-    },
-    linkContainer: {
-        flexDirection: "row",
-        justifyContent: "center",
-    },
-    linkText: {
-        color: COLORS.blue,
-    },
+  container: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+    backgroundColor: COLORS.white,
+    padding: 20,
+    paddingLeft: 10,
+  },
+  title: {
+    fontSize: 18,
+    textAlign: "center",
+    marginBottom: 20,
+    color: COLORS.black,
+  },
+  textName: {
+    fontSize: 18,
+    color: COLORS.black,
+    width: 100,
+  },
+  input: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    height: 44,
+    fontSize: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.gray,
+    marginVertical: 10,
+    marginHorizontal: 10,
+  },
+  textInput: {
+    padding: 8,
+    fontSize: 18,
+    color: COLORS.black,
+  },
+  buttonContainer: {
+    alignItems: "center",
+    marginVertical: 20,
+  },
+  button: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: COLORS.green,
+    height: 40,
+    width: 180,
+    borderRadius: 8,
+  },
+  buttonText: {
+    fontSize: 16,
+    color: COLORS.white,
+  },
+  error: {
+    margin: 10,
+    color: COLORS.red,
+    textAlign: "center",
+  },
+  linkContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  linkText: {
+    color: COLORS.blue,
+  },
 });

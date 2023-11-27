@@ -13,7 +13,7 @@ import { ContextApp } from "../../context/contextApp";
 
 const Login = () => {
   const navigation = useNavigation();
-  const { accounts, setAccounts } = useContext(ContextApp);
+  const { accounts, setAccounts, them } = useContext(ContextApp);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

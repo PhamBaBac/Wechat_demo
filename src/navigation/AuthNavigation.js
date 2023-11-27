@@ -121,7 +121,7 @@ function AuthNavigation() {
               onPress={() => navigation.goBack()}
               style={{ marginLeft: 10 }}
             >
-              <Image source={IMGS.backpage} style={{ width: 20, height: 20 }} />
+              <Ionicons name="ios-chevron-back" size={20} color={theme.color} />
             </Pressable>
           ),
         }}
@@ -140,7 +140,7 @@ function AuthNavigation() {
               onPress={() => navigation.goBack()}
               style={{ marginLeft: 10 }}
             >
-              <Image source={IMGS.backpage} style={{ width: 20, height: 20 }} />
+              <Ionicons name="ios-chevron-back" size={20} color={theme.color} />
             </Pressable>
           ),
         }}
@@ -159,7 +159,7 @@ function AuthNavigation() {
               onPress={() => navigation.goBack()}
               style={{ marginLeft: 10 }}
             >
-              <Image source={IMGS.backpage} style={{ width: 20, height: 20 }} />
+              <Ionicons name="ios-chevron-back" size={20} color={theme.color} />
             </Pressable>
           ),
         }}
