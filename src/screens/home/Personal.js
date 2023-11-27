@@ -5,15 +5,41 @@ import {
   Text,
   Image,
   TouchableOpacity,
+  Pressable,
 } from "react-native";
-import { COLORS,ROUTES } from "../../constants";
+import { COLORS, ROUTES, IMGS } from "../../constants";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 const Personal = ({ route }) => {
   const navigation = useNavigation();
   const { profiles } = route.params;
+
   return (
     <ScrollView style={{ flex: 1, backgroundColor: COLORS.gray }}>
+      <View
+        style={{
+          height: 60,
+          backgroundColor: COLORS.gray,
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Pressable
+          onPress={() => navigation.goBack()}
+          style={{ marginLeft: 10 }}
+        >
+          <Image source={IMGS.backpage} style={{ width: 20, height: 20 }} />
+        </Pressable>
+        <Pressable onPress={() => navigation.navigate(ROUTES.PERSONAL_SETTING, {uid: profiles.id})}>
+          <Ionicons
+            name="ellipsis-vertical"
+            size={24}
+            color="black"
+            style={{ marginRight: 10 }}
+          />
+        </Pressable>
+      </View>
       <View
         style={{
           flexDirection: "row",
@@ -54,7 +80,12 @@ const Personal = ({ route }) => {
         </View>
       </View>
       <TouchableOpacity
-      onPress={() => navigation.navigate(ROUTES.CHAT_SCREEN,{userName: profiles.userName, userImg: profiles.userImg})}
+        onPress={() =>
+          navigation.navigate(ROUTES.CHAT_SCREEN, {
+            userName: profiles.userName,
+            userImg: profiles.userImg,
+          })
+        }
         style={{
           marginTop: 6,
           height: 50,
@@ -66,7 +97,12 @@ const Personal = ({ route }) => {
           flexDirection: "row",
         }}
       >
-       <Ionicons name="ios-chatbubbles-outline" size={24} color={COLORS.black} style={{ marginRight: 10 }} />
+        <Ionicons
+          name="ios-chatbubbles-outline"
+          size={24}
+          color={COLORS.black}
+          style={{ marginRight: 10 }}
+        />
         <Text style={{ fontSize: 18 }}>Gửi tin nhắn</Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -78,7 +114,12 @@ const Personal = ({ route }) => {
           flexDirection: "row",
         }}
       >
-        <Ionicons name="ios-videocam-outline" size={24} color={COLORS.black} style={{ marginRight: 10 }} />
+        <Ionicons
+          name="ios-videocam-outline"
+          size={24}
+          color={COLORS.black}
+          style={{ marginRight: 10 }}
+        />
         <Text style={{ fontSize: 18 }}>Cuộc gọi video và thoại</Text>
       </TouchableOpacity>
     </ScrollView>

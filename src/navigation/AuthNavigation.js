@@ -81,33 +81,7 @@ function AuthNavigation() {
         name={ROUTES.PERSONAL_CHAT}
         component={PersonalChat}
         options={{
-          headerTitleAlign: "center",
-          headerStyle: {
-            backgroundColor: COLORS.gray,
-          },
-          headerLeft: () => (
-            <Pressable
-              onPress={() => navigation.goBack()}
-              style={{ marginLeft: 10 }}
-            >
-              <Image source={IMGS.backpage} style={{ width: 20, height: 20 }} />
-            </Pressable>
-          ),
-          headerTitle: '', 
-          headerRight: () => (
-            <View
-              style={{ flex: 1, flexDirection: "row", alignItems: "center" }}
-            >
-              <Pressable onPress={() => navigation.navigate(ROUTES.PERSONAL_SETTING)} >
-                <Ionicons
-                  name="ellipsis-vertical"
-                  size={24}
-                  color="black"
-                  style={{ marginRight: 10 }}
-                />
-              </Pressable>
-            </View>
-          ),
+          headerShown: false,
         }}
       />
       <Stack.Screen

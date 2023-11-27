@@ -8,19 +8,22 @@ export const AppProvider = ({ children }) => {
   const [accounts, setAccounts] = useState([]);
 
   const [profiles, setProfiles] = useState([]);
+  const fetchProfiles = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/profiles");
+      const data = await response.json();
+      setProfiles(data);
+    } catch (error) {
+      console.error("Error fetching profiles:", error);
+    }
+  };
   useEffect(() => {
-    const fetchProfiles = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/profiles");
-        const data = await response.json();
-        setProfiles(data);
-      } catch (error) {
-        console.error("Error fetching profiles:", error);
-      }
-    };
-
     fetchProfiles();
   }, []);
+
+  const updateProfilesAfterRegistration = async () => {
+    await fetchProfiles();
+  };
 
   const fetchAccounts = async () => {
     try {
@@ -52,7 +55,7 @@ export const AppProvider = ({ children }) => {
   }, [darkMode])
 
   return (
-    <ContextApp.Provider value={{  theme: darkMode === true ? theme.dark : theme.light,searchText, setSearchText, accounts, setAccounts, profiles, setProfiles, fetchAccounts,updateAccountsAfterRegistration}}>
+    <ContextApp.Provider value={{  theme: darkMode === true ? theme.dark : theme.light,searchText, setSearchText, accounts, setAccounts, profiles, setProfiles, fetchAccounts,updateAccountsAfterRegistration, updateProfilesAfterRegistration}}>
       {children}
     </ContextApp.Provider>
   );
