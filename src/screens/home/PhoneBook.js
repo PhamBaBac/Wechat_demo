@@ -5,11 +5,11 @@ import {
   FlatList,
   View,
   Image,
-  TouchableOpacity,
   StyleSheet,
   ScrollView,
+  Pressable,
 } from "react-native";
-import { COLORS, IMGS, ROUTES } from "../../constants";
+import { COLORS,ROUTES } from "../../constants";
 import { useNavigation } from "@react-navigation/native";
 import { ContextApp } from "../../context/contextApp";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -65,11 +65,11 @@ const PhoneBook = () => {
             >
               <Icon name="ios-people" size={24} color="white" />
             </View>
-            <TouchableOpacity style={styles.TextSection}>
+            <Pressable style={styles.TextSection}>
               <Text style={{ fontSize: 18, color: theme.color }}>
                 Bạn bè mới
               </Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
           <View
             style={{
@@ -90,11 +90,11 @@ const PhoneBook = () => {
             >
               <Icon name="ios-chatbubbles" size={24} color="white" />
             </View>
-            <TouchableOpacity style={styles.TextSection}>
+            <Pressable style={styles.TextSection}>
               <Text style={{ fontSize: 18, color: theme.color }}>
                 Trò chuyện nhóm
               </Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <View
@@ -110,9 +110,9 @@ const PhoneBook = () => {
             >
               <Icon name="ios-pricetag" size={24} color="white" />
             </View>
-            <TouchableOpacity style={styles.TextSection}>
+            <Pressable style={styles.TextSection}>
               <Text style={{ fontSize: 18, color: theme.color }}>Nhãn</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
           <View
             style={{
@@ -123,7 +123,7 @@ const PhoneBook = () => {
               backgroundColor: theme.backgroundColor[1],
             }}
           >
-            <TouchableOpacity style={{ marginVertical: 6, marginLeft: 10 }}>
+            <View style={{ marginVertical: 6, marginLeft: 10 }}>
               <View
                 style={{
                   flexDirection: "row",
@@ -143,13 +143,15 @@ const PhoneBook = () => {
                 >
                   <Icon name="ios-checkmark-circle" size={24} color="white" />
                 </View>
-                <Text
-                  style={{ fontSize: 18, marginLeft: 10, color: theme.color }}
-                >
-                  Tài khoản chính thức
-                </Text>
+                <Pressable>
+                  <Text
+                    style={{ fontSize: 18, marginLeft: 10, color: theme.color }}
+                  >
+                    Tài khoản chính thức
+                  </Text>
+                </Pressable>
               </View>
-            </TouchableOpacity>
+            </View>
           </View>
         </View>
         {Object.entries(groupedData)
@@ -177,7 +179,7 @@ const PhoneBook = () => {
                 data={profiles}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
-                  <TouchableOpacity
+                  <Pressable
                     onPress={() => handleUserPress(item)}
                     style={{
                       height: 54,
@@ -196,7 +198,7 @@ const PhoneBook = () => {
                         {item.userName}
                       </Text>
                     </Text>
-                  </TouchableOpacity>
+                  </Pressable>
                 )}
               />
             </View>

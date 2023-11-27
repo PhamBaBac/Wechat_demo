@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 8,
     fontSize: 18,
-    color: COLORS.gray,
+    color: COLORS.grayLight,
   },
   buttonContainer: {
     alignItems: "center",

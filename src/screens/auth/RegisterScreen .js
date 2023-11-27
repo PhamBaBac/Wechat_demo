@@ -23,6 +23,29 @@ const RegisterScreen = () => {
 
   const handleRegister = async () => {
     try {
+
+    if (!name || !wechatId || !phoneNumber || !password) {
+      setError("Please fill in all required fields");
+      return;
+    }
+
+    const wechatIdCheckUrl = `http://localhost:3000/accounts?wechatId=${wechatId}`;
+    const wechatIdCheckResult = await fetch(wechatIdCheckUrl);
+    const wechatIdCheckData = await wechatIdCheckResult.json();
+
+    if (wechatIdCheckData.length > 0) {
+      setError("WeChat ID is already in use. Please choose a different one.");
+      return;
+    }
+    const phoneNumberCheckUrl = `http://localhost:3000/accounts?phone=${phoneNumber}`;
+    const phoneNumberCheckResult = await fetch(phoneNumberCheckUrl);
+    const phoneNumberCheckData = await phoneNumberCheckResult.json();
+
+    if (phoneNumberCheckData.length > 0) {
+      setError("Phone number is already in use. Please choose a different one.");
+      return;
+    }
+
       const url = "http://localhost:3000/accounts";
       const result = await fetch(url, {
         method: "POST",

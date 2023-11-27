@@ -1,4 +1,4 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   ScrollView,
+  Pressable,
 } from "react-native";
 import { COLORS, IMGS, ROUTES } from "../../constants";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -30,16 +31,14 @@ const Profile = () => {
           padding: 10,
         }}
       >
-        <View style={{ width: 80 }}>
           <Image
             source={IMGS.user}
             style={{
               height: 80,
               borderRadius: 10,
-              resizeMode: "contain",
+              width: 80
             }}
           />
-        </View>
         <View style={{ marginLeft: 14 }}>
           <Text
             style={{
@@ -52,10 +51,12 @@ const Profile = () => {
             {currentUser ? currentUser.name : ""}
           </Text>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <Text style={{ fontSize: 18, color: theme.color }}>
-              Wechat ID: {currentUser ? currentUser.wechatId : ""}
-            </Text>
-            <View style={{ marginLeft: 100 }}>
+            <View style={{width: 220}}>
+              <Text style={{ fontSize: 18, color: theme.color }}>
+                Wechat ID: {currentUser ? currentUser.wechatId : ""}
+              </Text>
+            </View>
+            <View style={{ marginLeft: 10}}>
               <Ionicons name="ios-qr-code" size={18} color="black" />
             </View>
             <Image
@@ -68,7 +69,7 @@ const Profile = () => {
               }}
             />
           </View>
-          <TouchableOpacity
+          <Pressable
             style={{
               flexDirection: "row",
               width: 120,
@@ -82,10 +83,10 @@ const Profile = () => {
           >
             <Text style={{ fontSize: 18, color: theme.color }}>+</Text>
             <Text style={{ fontSize: 18, color: theme.color }}>Trạng thái</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
-      <TouchableOpacity
+      <Pressable
         style={{
           marginTop: 6,
           height: 50,
@@ -111,7 +112,7 @@ const Profile = () => {
             marginRight: 15,
           }}
         />
-      </TouchableOpacity>
+      </Pressable>
       <View style={{ backgroundColor: theme.backgroundColor[1], marginTop: 6 }}>
         <View
           style={{
@@ -123,7 +124,7 @@ const Profile = () => {
             source={IMGS.box}
             style={{ width: 24, height: 24, marginLeft: 10 }}
           />
-          <TouchableOpacity style={styles.TextSection}>
+          <Pressable style={styles.TextSection}>
             <Text style={{ fontSize: 18, color: theme.color }}>
               Mục ưa thích
             </Text>
@@ -135,7 +136,7 @@ const Profile = () => {
                 borderRadius: 15,
               }}
             />
-          </TouchableOpacity>
+          </Pressable>
         </View>
         <View
           style={{
@@ -147,7 +148,7 @@ const Profile = () => {
             source={IMGS.pic}
             style={{ width: 24, height: 24, marginLeft: 10 }}
           />
-          <TouchableOpacity style={styles.TextSection}>
+          <Pressable style={styles.TextSection}>
             <Text style={{ fontSize: 18, color: theme.color }}>
               Bài Đăng của tôi
             </Text>
@@ -159,14 +160,14 @@ const Profile = () => {
                 borderRadius: 15,
               }}
             />
-          </TouchableOpacity>
+          </Pressable>
         </View>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <Image
             source={IMGS.card}
             style={{ width: 24, height: 24, marginLeft: 10 }}
           />
-          <TouchableOpacity style={styles.TextSection}>
+          <Pressable style={styles.TextSection}>
             <Text style={{ fontSize: 18, color: theme.color }}>
               Thẻ & Ưu đãi
             </Text>
@@ -179,7 +180,7 @@ const Profile = () => {
                 borderRadius: 15,
               }}
             />
-          </TouchableOpacity>
+          </Pressable>
         </View>
         <View
           style={{
@@ -190,7 +191,7 @@ const Profile = () => {
             backgroundColor: theme.backgroundColor[1],
           }}
         >
-          <TouchableOpacity
+          <Pressable
             style={{ padding: 15, paddingLeft: 0, marginLeft: 10 }}
           >
             <View style={{ flexDirection: "row" }}>
@@ -201,7 +202,7 @@ const Profile = () => {
                 Thư viện nhãn
               </Text>
             </View>
-          </TouchableOpacity>
+          </Pressable>
           <Image
             source={IMGS.nextpage}
             style={{
@@ -213,7 +214,7 @@ const Profile = () => {
         </View>
       </View>
 
-      <TouchableOpacity
+      <Pressable
         style={{
           marginTop: 6,
           height: 50,
@@ -241,7 +242,7 @@ const Profile = () => {
             marginRight: 15,
           }}
         />
-      </TouchableOpacity>
+      </Pressable>
     </ScrollView>
   );
 };
