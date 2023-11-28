@@ -52,6 +52,18 @@ const RegisterScreen = () => {
         );
         return;
       }
+      let accountID;
+      const lastAccountUrl = "http://localhost:3000/accounts?_sort=accountID&_order=desc&_limit=1";
+      const lastAccountResult = await fetch(lastAccountUrl);
+      const lastAccountData = await lastAccountResult.json();
+      
+      if (lastAccountData.length > 0) {
+        const lastAccountID = lastAccountData[0].accountID;
+        const incrementedAccountID = String(Number(lastAccountID) + 1);
+        accountID = incrementedAccountID.padStart(lastAccountID.length, '0');
+      } else {
+        accountID = "1";
+      }   
 
       const url = "http://localhost:3000/accounts";
       const result = await fetch(url, {
@@ -60,6 +72,7 @@ const RegisterScreen = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          accountID: accountID,
           name: name,
           wechatId: wechatId,
           phone: phoneNumber,

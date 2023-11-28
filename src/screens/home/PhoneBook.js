@@ -15,9 +15,8 @@ import { ContextApp } from "../../context/contextApp";
 import Icon from "react-native-vector-icons/Ionicons";
 const PhoneBook = () => {
   const navigation = useNavigation();
-  const { profiles, searchText, theme } = useContext(ContextApp);
-
-  const filteredData = profiles.filter(
+  const { userProfiles, searchText,theme} = useContext(ContextApp);
+  const filteredData = userProfiles.filter(
     (item) =>
       item.userName.toLowerCase().includes(searchText.toLowerCase()) ||
       item.phone.toLowerCase().includes(searchText.toLowerCase())

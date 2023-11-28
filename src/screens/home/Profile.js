@@ -15,8 +15,7 @@ import { ContextApp } from "../../context/contextApp";
 
 const Profile = () => {
   const navigation = useNavigation();
-  const { accounts, theme } = useContext(ContextApp);
-  const currentUser = accounts.length > 0 ? accounts[0] : null;
+  const { accounts, theme, loggedInUser } = useContext(ContextApp);
   const handleSetting = () => {
     navigation.navigate(ROUTES.SETTING);
   };
@@ -47,12 +46,12 @@ const Profile = () => {
               color: theme.color,
             }}
           >
-            {currentUser ? currentUser.name : ""}
+            {loggedInUser.name}
           </Text>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <View style={{width: 220}}>
               <Text style={{ fontSize: 18, color: theme.color }}>
-                Wechat ID: {currentUser ? currentUser.wechatId : ""}
+                Wechat ID: {loggedInUser.wechatId}
               </Text>
             </View>
             <View style={{ marginLeft: 10}}>

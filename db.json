@@ -1,5 +1,21 @@
 {
   "accounts": [
+    {
+      "accountID": "1",
+      "name": "PhamBac",
+      "wechatId": "bacpham",
+      "phone": "111111111",
+      "password": "1111111@b",
+      "id": 1
+    },
+    {
+      "accountID": "2",
+      "name": "NamPham",
+      "wechatId": "nampham",
+      "phone": "222222222",
+      "password": "2222222@n",
+      "id": 2
+    }
   ],
   "profiles": [
     {
@@ -9,7 +25,8 @@
       "phone": "0123459999",
       "userImg": "https://res.cloudinary.com/du6ph3m8t/image/upload/v1700994229/hashirama_iik9ps.jpg",
       "messageTime": "4 min ago",
-      "messageText": "Hey there, this is my test for a post of my social app in React Native."
+      "messageText": "Hey there, this is my test for a post of my social app in React Native.",
+      "accountID": "1"
     },
     {
       "id": "2",
@@ -18,7 +35,8 @@
       "phone": "0987654321",
       "userImg": "https://res.cloudinary.com/du6ph3m8t/image/upload/v1700994128/tobirama_b3hmrb.jpg",
       "messageTime": "10 min ago",
-      "messageText": "Hello! This is another message from a different user."
+      "messageText": "Hello! This is another message from a different user.",
+      "accountID": "1"
     },
     {
       "id": "3",
@@ -27,7 +45,8 @@
       "phone": "0955555555",
       "userImg": "https://res.cloudinary.com/du6ph3m8t/image/upload/v1700994374/hiruzen_sarutobi_umeoe7.jpg",
       "messageTime": "1 hour ago",
-      "messageText": "This is Hiruzen's message. How are you doing? How are you?"
+      "messageText": "This is Hiruzen's message. How are you doing? How are you?",
+      "accountID": "1"
     },
     {
       "id": "4",
@@ -36,7 +55,8 @@
       "phone": "0955555555",
       "userImg": "https://res.cloudinary.com/du6ph3m8t/image/upload/v1700994456/minato_namikaze_tgd9kg.jpg",
       "messageTime": "1 hour ago",
-      "messageText": "This is Minato's message. How are you doing? How are you?"
+      "messageText": "This is Minato's message. How are you doing? How are you?",
+      "accountID": "2"
     },
     {
       "id": "5",
@@ -45,7 +65,8 @@
       "phone": "0955555555",
       "userImg": "https://res.cloudinary.com/du6ph3m8t/image/upload/v1700994564/tsunade_senju_wh37yc.jpg",
       "messageTime": "1 hour ago",
-      "messageText": "This is Tsunade's message. How are you doing? How are you?"
+      "messageText": "This is Tsunade's message. How are you doing? How are you?",
+      "accountID": "2"
     }
   ]
 }

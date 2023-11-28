@@ -5,8 +5,8 @@ import { useNavigation } from "@react-navigation/native";
 import { ContextApp } from '../../context/contextApp';
 const Home = () => {
   const navigation = useNavigation();
-  const { profiles, searchText,theme} = useContext(ContextApp);
-  const filteredData = profiles.filter(
+  const { userProfiles, searchText,theme} = useContext(ContextApp);
+  const filteredData = userProfiles.filter(
     (item) =>
       item.userName.toLowerCase().includes(searchText.toLowerCase()) ||
       item.phone.toLowerCase().includes(searchText.toLowerCase())

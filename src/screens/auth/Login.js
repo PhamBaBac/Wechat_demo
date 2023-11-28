@@ -13,27 +13,16 @@ import { ContextApp } from "../../context/contextApp";
 
 const Login = () => {
   const navigation = useNavigation();
-  const { accounts, setAccounts, them } = useContext(ContextApp);
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const { handleLogin} = useContext(ContextApp);
+  const [phoneNumber, setPhoneNumber, ] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  const handleLogin = async  () => {
+  const handleLoginPress = async () => {
     try {
-      // const account = accounts.find((user) => user.phone === phoneNumber);
-      // if (account) {
-      //   if (account.password === password) {
-      //     setAccounts([account,...accounts]);
-      //     navigation.navigate(ROUTES.HOME);
-      //   } else {
-      //     setError("Mật khẩu không đúng. Vui lòng kiểm tra lại");
-      //   }
-      // } else {
-      //   setError("Người dùng không tồn tại. Vui lòng kiểm tra lại số điện thoại");
-      // }
+      await handleLogin(phoneNumber, password);
       navigation.navigate(ROUTES.HOME);
     } catch (error) {
-      setError("Đã xảy ra lỗi khi đăng nhập");
+      setError("Số điện thoại hoặc mật khẩu không đúng. Vui lòng kiểm tra lại.");
       console.error("Error during login:", error);
     }
   };
@@ -75,7 +64,7 @@ const Login = () => {
         </View>
       </View>
       <View style={{ alignItems: "center" }}>
-        <Pressable style={styles.button} onPress={handleLogin}>
+        <Pressable style={styles.button} onPress={handleLoginPress}>
           <Text style={styles.buttonText}>Đăng nhập</Text>
         </Pressable>
         <View
